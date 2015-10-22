@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="1e917c54-3b81-40f2-9a74-85f372f5e0fa" name="Rutger@RUTGER-PC 2015-02-04 12:41:48" runUser="Rutger-PC\Rutger" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="615f2344-33cd-4b11-a440-94dfd2af8589">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Rutger_RUTGER-PC 2015-02-04 12_41_48">
+      <DeploymentItem filename="C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.dll" />
+      <DeploymentItem filename="C:\Users\Rutger\Desktop\ha\trunk\Jumping\Jumping\Jumping.exe" />
+      <DeploymentItem filename="C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Graphics.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2015-02-04T12:41:48.5815312+01:00" queuing="2015-02-04T12:41:48.6355343+01:00" start="2015-02-04T12:41:48.6415346+01:00" finish="2015-02-04T12:41:48.8795482+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="14" executed="14" passed="14" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestThrownObjectsAtRightScreenEdgeDeletion" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="8d69ca34-edd5-05f2-fe4d-8b094a30597d">
+      <Execution id="96e97f0e-21d0-4294-bbbc-1d54e0da1de0" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestThrownObjectsAtRightScreenEdgeDeletion" />
+    </UnitTest>
+    <UnitTest name="TestThrownObjectsAtLeftScreenEdgeDeletion" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="f2872982-fa52-101d-b8bc-19294deb8a7f">
+      <Execution id="0aeedf4b-0754-4dda-94dc-2262812f001d" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestThrownObjectsAtLeftScreenEdgeDeletion" />
+    </UnitTest>
+    <UnitTest name="TestThrownObjectPositionToTheLeftUpdate" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="b81927d1-3f51-9ba2-0c8f-468253723be1">
+      <Execution id="1c44c70d-0a4e-41d4-8c47-9b177f493249" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestThrownObjectPositionToTheLeftUpdate" />
+    </UnitTest>
+    <UnitTest name="TestPlayerIsHitByCollision" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="bebba097-6528-de52-af69-505f1c4691bd">
+      <Execution id="a3cfd413-3f72-4e43-befb-70efcd3484dd" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestPlayerIsHitByCollision" />
+    </UnitTest>
+    <UnitTest name="TestThrownObjectCollisionBoxToTheLeftUpdate" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="6ac9e95e-70bd-bc5d-9142-0682fad7d26a">
+      <Execution id="c27ae568-6371-46dc-83ca-8d7b1ee21fcc" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestThrownObjectCollisionBoxToTheLeftUpdate" />
+    </UnitTest>
+    <UnitTest name="TestPlayerCollidedWithThrownObjectOnTop" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="6be531cf-ab82-481b-637d-e611888c556c">
+      <Execution id="df3677bc-3dff-4eac-b606-0ca8a5473884" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestPlayerCollidedWithThrownObjectOnTop" />
+    </UnitTest>
+    <UnitTest name="TestThrownObjectsNotDeletingInScreenBound" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="22e0a90e-b2b8-6e48-9257-af29dff8b4f8">
+      <Execution id="3921c3a1-c787-486c-864d-6f993b2dc5ab" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestThrownObjectsNotDeletingInScreenBound" />
+    </UnitTest>
+    <UnitTest name="TestThrownObjectCollisionBoxToTheRightUpdate" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="fabca6e6-15e9-af7b-5300-6987368baab6">
+      <Execution id="760e2b76-a015-4820-b746-604d4fdfdbea" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestThrownObjectCollisionBoxToTheRightUpdate" />
+    </UnitTest>
+    <UnitTest name="TestPlayerCollidedWithThrownObjectOnBottom" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="fd4d0e49-fe0e-2f62-626b-31e7744a2deb">
+      <Execution id="4c4106da-9fe3-4a98-8110-b2d7760e96f1" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestPlayerCollidedWithThrownObjectOnBottom" />
+    </UnitTest>
+    <UnitTest name="TestPlayerCollidedWithThrownObjectInside" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="21f245b9-fe54-6cf9-000b-9505de0f646e">
+      <Execution id="11858662-de40-4e49-b892-be274aa690f0" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestPlayerCollidedWithThrownObjectInside" />
+    </UnitTest>
+    <UnitTest name="TestPlayerCollidedWithThrownObjectOnLeft" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="47299675-beaf-4bcf-2283-35c37aedc22e">
+      <Execution id="71031d70-d4d2-4fc2-8551-181a476ae6a6" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestPlayerCollidedWithThrownObjectOnLeft" />
+    </UnitTest>
+    <UnitTest name="TestThrownObjectDeletedAfterCollision" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="23d29e95-a6b9-f28b-2a40-ff1e5de5cef9">
+      <Execution id="95f03063-e3c9-400b-917c-279ab6a1996a" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestThrownObjectDeletedAfterCollision" />
+    </UnitTest>
+    <UnitTest name="TestThrownObjectPositionToTheRightUpdate" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="d0746a97-a2f6-875d-aa2b-d59e5346d5b9">
+      <Execution id="08ff569a-2e5e-4902-b8a9-5b1ad355b2b3" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestThrownObjectPositionToTheRightUpdate" />
+    </UnitTest>
+    <UnitTest name="TestPlayerCollidedWithThrownObjectOnright" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="8fcf9af0-e9b0-0e32-b505-123a524eb217">
+      <Execution id="3964ec6b-e7da-4fc8-b298-5b62fd2359f8" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestPlayerCollidedWithThrownObjectOnright" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="21f245b9-fe54-6cf9-000b-9505de0f646e" executionId="11858662-de40-4e49-b892-be274aa690f0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="22e0a90e-b2b8-6e48-9257-af29dff8b4f8" executionId="3921c3a1-c787-486c-864d-6f993b2dc5ab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="23d29e95-a6b9-f28b-2a40-ff1e5de5cef9" executionId="95f03063-e3c9-400b-917c-279ab6a1996a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="47299675-beaf-4bcf-2283-35c37aedc22e" executionId="71031d70-d4d2-4fc2-8551-181a476ae6a6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6ac9e95e-70bd-bc5d-9142-0682fad7d26a" executionId="c27ae568-6371-46dc-83ca-8d7b1ee21fcc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6be531cf-ab82-481b-637d-e611888c556c" executionId="df3677bc-3dff-4eac-b606-0ca8a5473884" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8d69ca34-edd5-05f2-fe4d-8b094a30597d" executionId="96e97f0e-21d0-4294-bbbc-1d54e0da1de0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8fcf9af0-e9b0-0e32-b505-123a524eb217" executionId="3964ec6b-e7da-4fc8-b298-5b62fd2359f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b81927d1-3f51-9ba2-0c8f-468253723be1" executionId="1c44c70d-0a4e-41d4-8c47-9b177f493249" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bebba097-6528-de52-af69-505f1c4691bd" executionId="a3cfd413-3f72-4e43-befb-70efcd3484dd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d0746a97-a2f6-875d-aa2b-d59e5346d5b9" executionId="08ff569a-2e5e-4902-b8a9-5b1ad355b2b3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f2872982-fa52-101d-b8bc-19294deb8a7f" executionId="0aeedf4b-0754-4dda-94dc-2262812f001d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fabca6e6-15e9-af7b-5300-6987368baab6" executionId="760e2b76-a015-4820-b746-604d4fdfdbea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fd4d0e49-fe0e-2f62-626b-31e7744a2deb" executionId="4c4106da-9fe3-4a98-8110-b2d7760e96f1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="11858662-de40-4e49-b892-be274aa690f0" testId="21f245b9-fe54-6cf9-000b-9505de0f646e" testName="TestPlayerCollidedWithThrownObjectInside" computerName="RUTGER-PC" duration="00:00:00.0194712" startTime="2015-02-04T12:41:48.6445348+01:00" endTime="2015-02-04T12:41:48.8195448+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="11858662-de40-4e49-b892-be274aa690f0">
+    </UnitTestResult>
+    <UnitTestResult executionId="3921c3a1-c787-486c-864d-6f993b2dc5ab" testId="22e0a90e-b2b8-6e48-9257-af29dff8b4f8" testName="TestThrownObjectsNotDeletingInScreenBound" computerName="RUTGER-PC" duration="00:00:00.0014293" startTime="2015-02-04T12:41:48.8215449+01:00" endTime="2015-02-04T12:41:48.8255451+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3921c3a1-c787-486c-864d-6f993b2dc5ab">
+    </UnitTestResult>
+    <UnitTestResult executionId="95f03063-e3c9-400b-917c-279ab6a1996a" testId="23d29e95-a6b9-f28b-2a40-ff1e5de5cef9" testName="TestThrownObjectDeletedAfterCollision" computerName="RUTGER-PC" duration="00:00:00.0003099" startTime="2015-02-04T12:41:48.8265452+01:00" endTime="2015-02-04T12:41:48.8285453+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="95f03063-e3c9-400b-917c-279ab6a1996a">
+    </UnitTestResult>
+    <UnitTestResult executionId="71031d70-d4d2-4fc2-8551-181a476ae6a6" testId="47299675-beaf-4bcf-2283-35c37aedc22e" testName="TestPlayerCollidedWithThrownObjectOnLeft" computerName="RUTGER-PC" duration="00:00:00.0004048" startTime="2015-02-04T12:41:48.8305454+01:00" endTime="2015-02-04T12:41:48.8325455+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="71031d70-d4d2-4fc2-8551-181a476ae6a6">
+    </UnitTestResult>
+    <UnitTestResult executionId="c27ae568-6371-46dc-83ca-8d7b1ee21fcc" testId="6ac9e95e-70bd-bc5d-9142-0682fad7d26a" testName="TestThrownObjectCollisionBoxToTheLeftUpdate" computerName="RUTGER-PC" duration="00:00:00.0015548" startTime="2015-02-04T12:41:48.8345457+01:00" endTime="2015-02-04T12:41:48.8375458+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c27ae568-6371-46dc-83ca-8d7b1ee21fcc">
+    </UnitTestResult>
+    <UnitTestResult executionId="df3677bc-3dff-4eac-b606-0ca8a5473884" testId="6be531cf-ab82-481b-637d-e611888c556c" testName="TestPlayerCollidedWithThrownObjectOnTop" computerName="RUTGER-PC" duration="00:00:00.0003456" startTime="2015-02-04T12:41:48.8395459+01:00" endTime="2015-02-04T12:41:48.8415461+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="df3677bc-3dff-4eac-b606-0ca8a5473884">
+    </UnitTestResult>
+    <UnitTestResult executionId="96e97f0e-21d0-4294-bbbc-1d54e0da1de0" testId="8d69ca34-edd5-05f2-fe4d-8b094a30597d" testName="TestThrownObjectsAtRightScreenEdgeDeletion" computerName="RUTGER-PC" duration="00:00:00.0002491" startTime="2015-02-04T12:41:48.8425461+01:00" endTime="2015-02-04T12:41:48.8445462+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="96e97f0e-21d0-4294-bbbc-1d54e0da1de0">
+    </UnitTestResult>
+    <UnitTestResult executionId="3964ec6b-e7da-4fc8-b298-5b62fd2359f8" testId="8fcf9af0-e9b0-0e32-b505-123a524eb217" testName="TestPlayerCollidedWithThrownObjectOnright" computerName="RUTGER-PC" duration="00:00:00.0003335" startTime="2015-02-04T12:41:48.8455463+01:00" endTime="2015-02-04T12:41:48.8475464+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3964ec6b-e7da-4fc8-b298-5b62fd2359f8">
+    </UnitTestResult>
+    <UnitTestResult executionId="1c44c70d-0a4e-41d4-8c47-9b177f493249" testId="b81927d1-3f51-9ba2-0c8f-468253723be1" testName="TestThrownObjectPositionToTheLeftUpdate" computerName="RUTGER-PC" duration="00:00:00.0010617" startTime="2015-02-04T12:41:48.8495465+01:00" endTime="2015-02-04T12:41:48.8515466+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1c44c70d-0a4e-41d4-8c47-9b177f493249">
+    </UnitTestResult>
+    <UnitTestResult executionId="a3cfd413-3f72-4e43-befb-70efcd3484dd" testId="bebba097-6528-de52-af69-505f1c4691bd" testName="TestPlayerIsHitByCollision" computerName="RUTGER-PC" duration="00:00:00.0011206" startTime="2015-02-04T12:41:48.8525467+01:00" endTime="2015-02-04T12:41:48.8555469+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a3cfd413-3f72-4e43-befb-70efcd3484dd">
+    </UnitTestResult>
+    <UnitTestResult executionId="08ff569a-2e5e-4902-b8a9-5b1ad355b2b3" testId="d0746a97-a2f6-875d-aa2b-d59e5346d5b9" testName="TestThrownObjectPositionToTheRightUpdate" computerName="RUTGER-PC" duration="00:00:00.0002013" startTime="2015-02-04T12:41:48.8565469+01:00" endTime="2015-02-04T12:41:48.8585470+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="08ff569a-2e5e-4902-b8a9-5b1ad355b2b3">
+    </UnitTestResult>
+    <UnitTestResult executionId="0aeedf4b-0754-4dda-94dc-2262812f001d" testId="f2872982-fa52-101d-b8bc-19294deb8a7f" testName="TestThrownObjectsAtLeftScreenEdgeDeletion" computerName="RUTGER-PC" duration="00:00:00.0002484" startTime="2015-02-04T12:41:48.8595471+01:00" endTime="2015-02-04T12:41:48.8615472+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0aeedf4b-0754-4dda-94dc-2262812f001d">
+    </UnitTestResult>
+    <UnitTestResult executionId="760e2b76-a015-4820-b746-604d4fdfdbea" testId="fabca6e6-15e9-af7b-5300-6987368baab6" testName="TestThrownObjectCollisionBoxToTheRightUpdate" computerName="RUTGER-PC" duration="00:00:00.0002573" startTime="2015-02-04T12:41:48.8635473+01:00" endTime="2015-02-04T12:41:48.8655474+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="760e2b76-a015-4820-b746-604d4fdfdbea">
+    </UnitTestResult>
+    <UnitTestResult executionId="4c4106da-9fe3-4a98-8110-b2d7760e96f1" testId="fd4d0e49-fe0e-2f62-626b-31e7744a2deb" testName="TestPlayerCollidedWithThrownObjectOnBottom" computerName="RUTGER-PC" duration="00:00:00.0003296" startTime="2015-02-04T12:41:48.8665475+01:00" endTime="2015-02-04T12:41:48.8685476+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4c4106da-9fe3-4a98-8110-b2d7760e96f1">
+    </UnitTestResult>
+  </Results>
+</TestRun>

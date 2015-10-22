@@ -1,0 +1,65 @@
+﻿using Jumping.Models.Graphics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Serialization;
+
+namespace Jumping.Models.Sprites
+{
+    [XmlRoot(ElementName = "Switch")]
+    public class Switch : ISprite
+    {
+        [XmlIgnore]
+        public Vector2 _Position { get; set; }
+        [XmlIgnore]
+        public Texture2D Texture { get; set; }
+
+        [XmlElement("TextureName")]
+        public String textureName;
+
+        [XmlElement("Position")]
+        public Vector2 position;
+        [XmlIgnore]
+        public Rectangle collisionBox { get; set; }
+        [XmlIgnore]
+        public SpriteEffects effects { get; set; }
+        [XmlElement("State")]
+        public Animation2 animation;
+        private Animator animator;
+        private SpriteEffects _effects;
+
+        public void Initialize()
+        {
+            if (textureName == "")
+            {
+                _effects = SpriteEffects.None;
+                animator = new Animator();
+                animation.Initialize();
+            }
+            else
+                this.Texture = TextureLoader.GetInstance().GetTexture(textureName);
+
+            collisionBox = new Rectangle((int)_Position.X, (int)_Position.Y, Texture.Width, Texture.Height);
+        }
+
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            if (textureName != "")
+            {
+                spriteBatch.Draw(Texture, new Rectangle((int)position.X, (int)position.Y,
+                    Texture.Width, Texture.Height), Color.White);
+            }
+            else
+                animator.Draw(gameTime, spriteBatch, position, _effects);
+        }
+
+        public void Update()
+        {
+            if (textureName == "")
+                animator.PlayAnimation(animation);
+        }
+    }
+}

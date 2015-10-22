@@ -1,0 +1,37 @@
+﻿using Jumping.Models.Features;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Serialization;
+
+namespace Jumping.Models.Core
+{
+    [XmlInclude(typeof(Weapon))]
+    [XmlInclude(typeof(MedKit))]
+    [XmlRoot(ElementName = "Item")]
+    public abstract class Item : ISprite
+    {
+        [XmlElement("Position")]
+        public Vector2 _Position { get; set; }
+        [XmlElement("TextureName")]
+        public String textureName;
+        [XmlIgnore]
+        public Texture2D Texture { get; set; }
+        [XmlIgnore]
+        public Rectangle collisionBox { get; set; }
+        public Level level { get; set; }
+
+        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
+        
+        public abstract int Use();
+        public abstract void Initialize();
+
+        public void SetLevel(Level level)
+        {
+            this.level = level;
+        }
+    }
+}

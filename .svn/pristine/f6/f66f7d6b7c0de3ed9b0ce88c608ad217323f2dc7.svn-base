@@ -1,0 +1,66 @@
+﻿    using Jumping.Models.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Jumping.Models.Core;
+using System.Xml.Serialization;
+using Microsoft.Xna.Framework;
+using Jumping.Models.Sprites;
+
+namespace Jumping.Models.Features
+{
+  
+    [XmlRoot(ElementName = "ThrowAttack")]
+    public class ThrowAttack : IAttackBehavior
+    {
+        private MovableObject thrower;
+        private Level level;
+        private Vector2 position;
+        private ThrowObject thrownObject;
+
+        public void Use(MovableObject objectType)
+        {
+            thrower = objectType;
+            position = objectType.position;
+
+            ThrowObject throwObject = createThrowObject();
+            thrownObject = throwObject;
+            level.ThrownObjects.Add(thrownObject);
+        }
+        
+        public void setLevel(Level level)
+        {
+            this.level = level;
+        }
+        public void Update(GameTime gameTime)
+        {
+        }
+
+        public void SetPlayer(Player player)
+        {
+        }
+
+        
+        public void deleteThrowObject()
+        {
+            this.thrownObject = null;
+        }
+       
+        public ThrowObject getThrowObject()
+        {
+            return thrownObject;
+        }
+        
+        private ThrowObject createThrowObject()
+        {
+            ThrowObject throwObject = new ThrowObject();
+            throwObject.setThrower(thrower);
+            throwObject.Initialize();
+
+            return throwObject;
+        }
+
+        public void Use(GameTime gameTime) { }
+    }
+}

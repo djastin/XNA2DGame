@@ -1,0 +1,37 @@
+﻿using Jumping.Models.Core;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Serialization;
+
+namespace Jumping.Models.Features
+{
+    [XmlRoot(ElementName = "Medkit")]
+    public class MedKit : Item
+    {
+        private int hp = 2000;
+
+        public override void Initialize()
+        {
+            Texture = TextureLoader.GetInstance().GetTexture(textureName);
+            collisionBox = new Rectangle((int)_Position.X, (int)_Position.Y, Texture.Width, Texture.Height);
+        }
+
+       
+
+        public override void Draw(GameTime gameTime,SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Texture, _Position, Color.White);
+        }
+
+        public override int Use()
+        {
+            Player p = level.Player;
+            int playerHP = p.GetHp() + hp;
+            return playerHP;
+        }
+    }
+}

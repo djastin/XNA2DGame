@@ -1,0 +1,160 @@
+﻿using Jumping.Models.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Timers
+;
+using Microsoft.Xna.Framework;
+using System.Diagnostics;
+
+namespace Jumping.Models.Features
+{
+    public class HeadRollAttack : IAttackBehavior
+    {
+
+        public void Use(MovableObject objectType)
+        {
+
+        }
+        public void Update(GameTime gametime) { }
+        public void SetPlayer(Player player) { }
+        public void Use(GameTime gametime) { }
+        /*
+        private Player _player;
+        private Boolean _headrollCooledDown = false;
+        private float _timer; // hernoemen vage aanduiding.
+        private float _moveTimer = 1;
+        private const float _interval = 200;
+        
+        public void Use(MovableObject objectType){}
+
+        private Player player;
+        private Boolean headrollCooledDown;
+        private Boolean animateRoll;
+        private int oldDamage;
+        private Timer rollTimer = new Timer();
+        private Timer coolDownTimer = new Timer();
+        public int damage;
+>>>>>>> .r80
+
+        public void Use(MovableObject objectType) { }
+
+        public HeadRollAttack()
+        {
+<<<<<<< .mine
+            _timer += (float)gametime.ElapsedGameTime.TotalMilliseconds;
+=======
+            headrollCooledDown = true;
+            animateRoll = false;
+            damage = 20;
+            
+            
+            
+            rollTimer.Elapsed += new ElapsedEventHandler(StopRolling);
+            rollTimer.Interval = 800;
+            coolDownTimer.Elapsed += new ElapsedEventHandler(CoolDown);
+            coolDownTimer.Interval = 2000;
+        }
+>>>>>>> .r80
+
+<<<<<<< .mine
+            if (_timer > _interval)
+            {
+                ResetPlayer();
+            }
+         }
+
+        public void Use(GameTime gametime)
+=======
+        public void Update(GameTime gametime)
+>>>>>>> .r80
+        {
+<<<<<<< .mine
+            _timer = 0;
+            float elapsed = +(float)gametime.ElapsedGameTime.TotalSeconds;
+
+            _moveTimer -= elapsed;
+
+            if (!_headrollCooledDown)
+=======
+            if (animateRoll)
+>>>>>>> .r80
+            {
+<<<<<<< .mine
+                _headrollCooledDown = true;
+                _player.SetDoesDamage(true);
+
+=======
+                player.isAnimatedObject = false;
+                
+>>>>>>> .r80
+                if (_player.Direction == Direction.Right)
+                {
+<<<<<<< .mine
+                    _player.Position = new Vector2(_player.Position.X + 20f, _player.Position.Y);
+=======
+                    player.animator.PlayAnimation(player.states[2]);
+                    player.Walk(Direction.Right, 0.1f);
+>>>>>>> .r80
+                }
+                else
+                {
+<<<<<<< .mine
+                    _player.Position = new Vector2(_player.Position.X - 20f, _player.Position.Y);
+=======
+                    player.animator.PlayAnimation(player.states[2]);
+                    player.Walk(Direction.Left, 0.1f);
+>>>>>>> .r80
+                }
+            }
+        }
+
+<<<<<<< .mine
+        public void ResetPlayer()
+=======
+        public void Use(GameTime gametime)
+>>>>>>> .r80
+        {
+<<<<<<< .mine
+            _player.SetDoesDamage(false);
+            _headrollCooledDown = false;
+=======
+            if (headrollCooledDown)
+            {
+                oldDamage = player.getDamage();
+                player.setDamage(damage);
+                rollTimer.Start();
+                coolDownTimer.Start();
+                animateRoll = true;
+                player.setDoesDamage(true);
+                headrollCooledDown = false;
+               
+                //player.animateWalk = false;
+            }
+        }
+
+
+        private void StopRolling(object source, ElapsedEventArgs e)
+        {
+            animateRoll = false;
+            player.isAnimatedObject = true;
+            player.setDoesDamage(false);
+            player.setDamage(oldDamage);
+            //player.animateWalk = true;
+            rollTimer.Stop();
+>>>>>>> .r80
+        }
+
+        private void CoolDown(object source, ElapsedEventArgs e)
+        {
+            headrollCooledDown = true;
+            coolDownTimer.Stop();
+        }
+
+        public void SetPlayer(Player player)
+        {
+            this._player = player;
+        }*/
+    }
+}

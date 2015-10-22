@@ -1,0 +1,86 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+
+namespace Jumping.Models.Core
+{
+    public class CollisionDetector
+    {
+        private bool isCollision;
+        public bool collisionLeft, collisionRight, collisionTop, collisionBottom;
+        private static CollisionDetector colDetector;
+        private CollisionDetector() { }
+
+
+        public static CollisionDetector GetInstance()
+        {
+            if (colDetector == null)
+            {
+                colDetector = new CollisionDetector();
+            }
+            return colDetector;
+        }
+
+        public bool CheckCollision(Rectangle A, Rectangle B)
+        {
+            if (A.Intersects(B))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool CheckLeftObstacleCollision(MovableObject obj, Obstacle platform)
+        {
+            Rectangle collisionBox = obj.collisionBox = new Rectangle((int)obj.position.X, (int)obj.position.Y, obj.Texture.Width, obj.Texture.Height);
+
+            Rectangle left = new Rectangle((int)platform.position.X - 10, (int)platform.position.Y + 5, 10, platform.Texture.Height - 10);
+            return collisionLeft = (obj.collisionBox.Intersects(left));
+        }
+
+        public bool CheckRightObstacleCollision(MovableObject obj, Obstacle platform)
+        {
+            Rectangle collisionBox = obj.collisionBox = new Rectangle((int)obj.position.X, (int)obj.position.Y, obj.Texture.Width, obj.Texture.Height);
+
+
+            Rectangle right = new Rectangle((int)platform.position.X + platform.Texture.Width, (int)platform.position.Y + 5, 10, platform.Texture.Height - 10);
+            return collisionRight = (obj.collisionBox.Intersects(right));
+        }
+
+        public bool CheckTopObstacleCollision(MovableObject obj, Obstacle platform)
+        {
+            Rectangle collisionBox = obj.collisionBox = new Rectangle((int)obj.position.X, (int)obj.position.Y, obj.Texture.Width, obj.Texture.Height);
+
+            Rectangle top = new Rectangle((int)platform.position.X + 5, (int)platform.position.Y - 10, platform.Texture.Width - 10, 10);
+            return collisionTop = (obj.collisionBox.Intersects(top));
+        }
+
+        public bool CheckBottomObstacleCollision(MovableObject obj, Obstacle platform)
+        {
+            obj.collisionBox = new Rectangle((int)obj.position.X, (int)obj.position.Y, obj.Animation.frameWidth, obj.Animation.frameHeight);
+
+            Rectangle bottom = new Rectangle((int)platform.position.X + 5, (int)platform.position.Y + platform.Texture.Height, platform.Texture.Width - 10, 10);
+            return collisionBottom = (obj.collisionBox.Intersects(bottom));
+        }
+
+        public bool CheckObstacleCollision(MovableObject obj, Obstacle platform)
+        {
+            isCollision = false;
+            if (CheckBottomObstacleCollision(obj, platform) || CheckLeftObstacleCollision(obj, platform) || CheckRightObstacleCollision(obj, platform) || CheckTopObstacleCollision(obj, platform) == true)
+            {
+                return isCollision = true;
+            }
+            else
+            {
+                return isCollision = false;
+            }
+
+
+        }
+    }
+}

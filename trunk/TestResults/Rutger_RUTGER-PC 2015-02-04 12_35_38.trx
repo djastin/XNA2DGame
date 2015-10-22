@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="be15d2c8-96ac-425f-83c9-47d46cc91dab" name="Rutger@RUTGER-PC 2015-02-04 12:35:38" runUser="Rutger-PC\Rutger" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="615f2344-33cd-4b11-a440-94dfd2af8589">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Rutger_RUTGER-PC 2015-02-04 12_35_38">
+      <DeploymentItem filename="C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.dll" />
+      <DeploymentItem filename="C:\Users\Rutger\Desktop\ha\trunk\Jumping\Jumping\Jumping.exe" />
+      <DeploymentItem filename="C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Graphics.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2015-02-04T12:35:38.0993408+01:00" queuing="2015-02-04T12:35:43.3486411+01:00" start="2015-02-04T12:35:43.4366461+01:00" finish="2015-02-04T12:37:10.8076434+01:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="RUTGER-PC" outcome="Error" timestamp="2015-02-04T12:37:10.8076434+01:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestThrownObjectsAtScreenEdgeDeletion" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="710919d6-93a7-8db0-d6b8-3af127f67e13">
+      <Execution id="774aec70-543d-4b17-bcc3-05a8c267ee11" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestThrownObjectsAtScreenEdgeDeletion" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="710919d6-93a7-8db0-d6b8-3af127f67e13" executionId="774aec70-543d-4b17-bcc3-05a8c267ee11" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="774aec70-543d-4b17-bcc3-05a8c267ee11" testId="710919d6-93a7-8db0-d6b8-3af127f67e13" testName="TestThrownObjectsAtScreenEdgeDeletion" computerName="RUTGER-PC" duration="00:01:26.8709687" startTime="2015-02-04T12:35:43.9366747+01:00" endTime="2015-02-04T12:37:10.8076434+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="774aec70-543d-4b17-bcc3-05a8c267ee11">
+    </UnitTestResult>
+  </Results>
+</TestRun>

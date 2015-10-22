@@ -1,0 +1,109 @@
+﻿using Jumping.Models.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Jumping.Models.Features
+{
+    public class FeatureLoader
+    {
+        private static FeatureLoader _instance;
+        private Dictionary<String, IBoostBehavior> _boosts;
+        private Dictionary<String, IStrategyBehavior> _strategies;
+        private Dictionary<String, Weapon> _weapons;
+        private Dictionary<String, IAttackBehavior> _attacks;
+
+        private FeatureLoader()
+        {
+            _boosts = new Dictionary<string, IBoostBehavior>();
+            _strategies = new Dictionary<string, IStrategyBehavior>();
+            _weapons = new Dictionary<string, Weapon>();
+            _attacks = new Dictionary<string, IAttackBehavior>();
+        }
+
+        public static FeatureLoader GetInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new FeatureLoader();
+            }
+            return _instance;
+        }
+
+        public void AddBoost(String key, IBoostBehavior boost)
+        {
+            _boosts.Add(key, boost);
+        }
+
+        public void AddWeapon(string key, Weapon weapon)
+        {
+            _weapons.Add(key, weapon);
+        }
+
+        public Dictionary<String, IBoostBehavior> GetBoosts()
+        {
+            return _boosts;
+        }
+
+        public IBoostBehavior GetBoost(String key)
+        {
+            if (_boosts.ContainsKey(key))
+            {
+                return _boosts[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public Dictionary<String, Weapon> GetWeapons()
+        {
+            return _weapons;
+        }
+
+        public void addStrategy(String key, IStrategyBehavior strategy)
+        {
+            _strategies.Add(key, strategy);
+        }
+
+        public Dictionary<String, IStrategyBehavior> GetStrategies()
+        {
+            return _strategies;
+        }
+
+        public IStrategyBehavior GetStrategy(String key)
+        {
+            if (_strategies.ContainsKey(key))
+                return _strategies[key];
+            return null;
+        }
+
+        public Weapon GetWeapon(String key)
+        {
+            if(_weapons.ContainsKey(key))
+               return _weapons[key];
+            return null;
+            
+        }
+
+        public void AddAttack(String key, IAttackBehavior attack)
+        {
+            _attacks.Add(key, attack);
+        }
+
+        public Dictionary<String, IAttackBehavior> GetAttacks()
+        {
+            return _attacks;
+        }
+
+        public IAttackBehavior GetAttack(String key)
+        {
+            if (_attacks.ContainsKey(key))
+                return _attacks[key];
+            return null;
+        }
+
+    }
+}

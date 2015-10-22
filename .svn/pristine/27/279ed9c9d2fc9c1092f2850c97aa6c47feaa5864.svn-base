@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Xml.Serialization;
+
+namespace Jumping.Models.Core
+{
+    [XmlRoot(ElementName = "BadGrade")]
+    public class BadGrade: Item
+    {
+        private int numberOfBadGrades;
+
+        public override void Initialize()
+        {
+            Texture = TextureLoader.GetInstance().GetTexture(textureName);
+            collisionBox = new Rectangle((int)_Position.X, (int)_Position.Y, Texture.Width, Texture.Height);
+        }
+
+        public override int Use()
+        {
+            numberOfBadGrades++;
+            return numberOfBadGrades;
+        }
+
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Texture, _Position, Color.White);
+        }
+    }
+}

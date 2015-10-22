@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Serialization;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Jumping.Models.Core;
+
+namespace Jumping.Models
+{
+    [XmlInclude(typeof(ShootableWeapon))]
+    public class Weapon : Item
+    {
+        [XmlIgnore]
+        public Rectangle collisionBox { get; set; }
+
+        public override void Initialize()
+        {
+            Texture = TextureLoader.GetInstance().GetTexture(textureName);
+            collisionBox = new Rectangle((int)_Position.X, (int)_Position.Y, Texture.Width, Texture.Height);
+        }
+
+        public override void Draw(GameTime gameTime,SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Texture, _Position, Color.White);
+
+            if (this is ShootableWeapon)
+            {
+                ShootableWeapon weapon = (ShootableWeapon)this;
+
+                for (int ammo_inc = 0; ammo_inc <= weapon.getAmmo().Count() - 1; ammo_inc++)
+                {
+                    weapon.getAmmo()[ammo_inc].Draw(gameTime,spriteBatch);
+                }
+            }
+        }
+
+       
+
+        public override int Use()
+        {
+            return 0;
+        }
+    }
+}
+

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="d354a28a-13fb-4b0d-b8e9-fce75a60c68f" name="Rutger@RUTGER-PC 2015-02-04 12:38:49" runUser="Rutger-PC\Rutger" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="615f2344-33cd-4b11-a440-94dfd2af8589">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Rutger_RUTGER-PC 2015-02-04 12_38_49">
+      <DeploymentItem filename="C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.dll" />
+      <DeploymentItem filename="C:\Users\Rutger\Desktop\ha\trunk\Jumping\Jumping\Jumping.exe" />
+      <DeploymentItem filename="C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Graphics.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2015-02-04T12:38:49.7012998+01:00" queuing="2015-02-04T12:38:49.7613033+01:00" start="2015-02-04T12:38:49.7693037+01:00" finish="2015-02-04T12:38:49.9823159+01:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestThrownObjectsAtScreenEdgeDeletion" storage="c:\users\rutger\desktop\ha\trunk\projectherkansingtestomgeving\bin\debug\projectherkansingtestomgeving.dll" id="710919d6-93a7-8db0-d6b8-3af127f67e13">
+      <Execution id="d5a1e278-1f6b-41fd-8216-454d6985d069" />
+      <TestMethod codeBase="C:/Users/Rutger/Desktop/ha/trunk/ProjectHerkansingTestOmgeving/bin/Debug/ProjectHerkansingTestOmgeving.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ProjectHerkansingTestOmgeving.ThrowObjectTest, ProjectHerkansingTestOmgeving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestThrownObjectsAtScreenEdgeDeletion" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="710919d6-93a7-8db0-d6b8-3af127f67e13" executionId="d5a1e278-1f6b-41fd-8216-454d6985d069" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="d5a1e278-1f6b-41fd-8216-454d6985d069" testId="710919d6-93a7-8db0-d6b8-3af127f67e13" testName="TestThrownObjectsAtScreenEdgeDeletion" computerName="RUTGER-PC" duration="00:00:00.0359551" startTime="2015-02-04T12:38:49.7753041+01:00" endTime="2015-02-04T12:38:49.9663150+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d5a1e278-1f6b-41fd-8216-454d6985d069">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.IsFalse failed. </Message>
+          <StackTrace>   at ProjectHerkansingTestOmgeving.ThrowObjectTest.TestThrownObjectsAtScreenEdgeDeletion() in C:\Users\Rutger\Desktop\ha\trunk\ProjectHerkansingTestOmgeving\ThrowObjectTest.cs:line 212
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

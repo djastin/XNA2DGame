@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Serialization;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Jumping.Models
+{
+    [XmlRoot(ElementName = "Background")]
+    public class Background : ISprite
+    {
+        public Rectangle collisionBox { get; set; }
+        [XmlElement ("Position")]
+        public Vector2 position;
+        [XmlElement("TextureName")]
+        public String textureName;
+        public Texture2D Texture { get; set; }
+       
+        public void Initialize()
+        {
+            this.Texture = TextureLoader.GetInstance().GetTexture(textureName);
+            collisionBox = new Rectangle((int)position.X, (int)position.Y, Texture.Width, Texture.Height);
+        }
+
+        public Vector2 _Position 
+        { 
+            get 
+            { 
+                return position; 
+            } 
+            set 
+            { 
+                position = value;  
+            } 
+        }
+        
+        public void Draw(GameTime gameTime,SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Texture, _Position, Color.White);
+        }
+    }
+}

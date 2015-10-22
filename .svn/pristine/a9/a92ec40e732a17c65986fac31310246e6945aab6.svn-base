@@ -1,0 +1,47 @@
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Jumping;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Jumping.Models;
+using Jumping.Models.Core;
+using Jumping.Models.Features;
+
+namespace TestEnvironment
+{
+    [TestClass]
+    public class CollisionItemTest
+    {
+        Player player;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            Rectangle screenBound = new Rectangle();
+            player = new Player();
+            player._Position = Vector2.Zero;
+            player.Speed = 6f;
+            player.screenBound = screenBound;
+            player.velocity = new Vector2(0.2f, 0);
+        }
+
+        [TestMethod]
+        public void TestCollision()
+        {
+            Item medKit = new MedKit();
+            medKit._Position = new Vector2(4.2f, 0);
+
+            player.Walk(Direction.Right, 2f);
+            player.updatePosition();
+            player.Walk(Direction.Right, 2f);
+            player.updatePosition();
+
+            player.collisionBox = new Rectangle((int)player._Position.X, (int)player._Position.Y, 1, 1);
+            medKit.collisionBox = new Rectangle((int)medKit._Position.X, (int)medKit._Position.Y, 1, 1);
+
+            Assert.IsTrue(medKit.collisionBox.Intersects(player.collisionBox));
+        }
+        
+    }
+}

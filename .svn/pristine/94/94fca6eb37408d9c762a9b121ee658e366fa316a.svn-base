@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Serialization;
+using System.IO;
+using Jumping.Models.Sprites;
+using Jumping.Models.Features;
+using Jumping.Models.Graphics;
+
+namespace Jumping.Models.Core
+{
+    public class XmlManager<T>
+    {
+        public Type Type { get; set; }
+
+        public T Load(String path)
+        {
+            T instance;
+            using (TextReader reader = new StreamReader(path))
+            {
+                Type[] extraTypes = new Type[9];
+                extraTypes[0] = typeof(Background);
+                extraTypes[1] = typeof(Obstacle);
+                extraTypes[2] = typeof(Player);
+                extraTypes[3] = typeof(LittleEnemy);
+                extraTypes[4] = typeof(Decoration);
+                extraTypes[5] = typeof(ShootableWeapon);
+                extraTypes[6] = typeof(MedKit);
+                extraTypes[7] = typeof(EndBoss);
+                extraTypes[8] = typeof(Animation2);
+                
+                XmlSerializer xml = new XmlSerializer(Type, extraTypes);
+                instance = (T)xml.Deserialize(reader);
+            }
+            return instance;
+        }
+
+        public void Save(String path, object obj)
+        {
+            using (TextWriter writer = new StreamWriter(path))
+            {
+                XmlSerializer xml = new XmlSerializer(Type);
+                xml.Serialize(writer, obj);
+            }
+        }
+    }
+}

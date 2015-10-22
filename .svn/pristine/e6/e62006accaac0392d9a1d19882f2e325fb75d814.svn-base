@@ -1,0 +1,88 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Jumping.Models;
+using Jumping.Models.Interfaces;
+using Jumping.Models.Graphics;
+using System.Xml.Serialization;
+using Jumping.Models.Features;
+using Jumping.Models.Sprites;
+
+namespace Jumping.Models
+{
+    [XmlInclude(typeof(LittleEnemy))]
+    [XmlInclude(typeof(EndBoss))]
+    [XmlRoot(ElementName = "Enemy")]
+    public abstract class Enemy : MovableObject
+    {
+        private IAttackBehavior attack;
+        private Player player;
+        private IStrategyBehavior behavior;
+        [XmlElement("AttackBehavior")]
+        public String attackName;
+        [XmlElement ("StrategyBehavior")]
+        public String strategy;
+
+        public void SetAttackBehavior(IAttackBehavior attack)
+        {
+            this.attack = attack;
+        }
+        
+        public void SetBehavior()
+        {
+            player = level.Player;
+            behavior = FeatureLoader.GetInstance().GetStrategy(strategy);
+            behavior.SetEnemy(this);
+            behavior.SetPlayer(player);
+        }
+     
+        public IStrategyBehavior GetBehavior()
+        {
+            return behavior;
+        }
+
+        public void PerformStrategy()
+        {
+            behavior.Strategy();
+        }
+
+        public void setAttack()
+        {
+            attack = FeatureLoader.GetInstance().GetAttack(attackName);
+        }
+        
+        public IAttackBehavior getAttack()
+        {
+            return attack;
+        }
+
+        public override void Initialize(bool animatedObject)
+        {
+            if (this is LittleEnemy)
+            {
+                SetHp(1000);
+                setDamage(20);
+            }
+            if (this is EndBoss)
+            {
+                SetHp(1000);
+                setDamage(20);
+            }
+            base.Initialize(true);
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
+            SetBehavior();
+            PerformStrategy();
+            Fall2(gameTime);
+        }
+    }
+}
+

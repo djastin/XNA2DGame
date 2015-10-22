@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Jumping.Models.Graphics;
+
+namespace Jumping.Models
+{
+    public class Ammunition : ISprite
+    {
+        public Vector2 _Position { get; set; }
+        public float speed;
+        public int frameHeight;
+        public int frameWidth;
+        public Texture2D Texture { get; set; }
+        public Rectangle collisionBox { get; set; }
+        public SpriteEffects effects { get; set; }
+        public String TextureName;
+        public Boolean isFired { get; set; }
+        public Direction direction;
+
+        public Ammunition()
+        {
+            speed = 10f;
+        }
+
+        public void Initialize()
+        {
+            Texture = TextureLoader.GetInstance().GetTexture(TextureName);
+        }
+
+        public bool CheckCollision(ISprite sprite)
+        {
+            collisionBox = new Rectangle((int)_Position.X, (int)_Position.Y, Texture.Width, Texture.Height);
+            bool isCollision = false;
+            if (sprite is Enemy)
+            {
+                Enemy enemy = (Enemy)sprite;
+                Rectangle enemyBox = new Rectangle((int)enemy._Position.X, (int)enemy._Position.Y, enemy.Texture.Width, enemy.Texture.Height);
+                isCollision = collisionBox.Intersects(enemyBox);
+            }
+
+            return isCollision;
+        }
+
+        public void Move(Direction direction)
+        {
+            if (direction == Direction.Right)
+            {
+                _Position += new Vector2(speed, 0);
+            }
+            else
+                _Position -= new Vector2(speed, 0);
+        }
+
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Texture, _Position, Color.White);
+        }
+    }
+}

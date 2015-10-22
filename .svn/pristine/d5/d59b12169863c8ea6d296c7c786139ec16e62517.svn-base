@@ -1,0 +1,451 @@
+﻿using Jumping.Models.Core;
+using Jumping.Models.Features;
+using Jumping.Models.Sprites;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Serialization;
+using System.Diagnostics;
+using Jumping.Enumerations;
+
+namespace Jumping.Models
+{
+    [XmlRoot(ElementName="Level")]
+    public class Level
+    {
+        private Camera _camera;
+        private CollisionDetector _collisionDetector;
+        private int _totalCollectableItems;
+
+        public String Name { get; set; }
+        [XmlElement("Player")]
+        public Player Player { get; set; }
+        [XmlElement("Background")]
+        public List<Background> Backgrounds { get; set; }
+        [XmlElement(typeof(ShootableWeapon))]
+        [XmlElement(typeof(Weapon))]
+        [XmlElement(typeof(MedKit))]
+        [XmlElement(typeof(Diamond))]
+        [XmlElement(typeof(BadGrade))]
+        [XmlElement("Item")]
+        public List<Item> Items { get; set; }
+        [XmlElement("Obstacle")]
+        public List<Obstacle> Obstacles { get; set; }
+        [XmlElement(typeof(LittleEnemy))]
+        [XmlElement(typeof(EndBoss))]
+        [XmlElement("MovableObject")]
+        public List<MovableObject> MovableObjects { get; set; }
+        public List<ThrowObject> ThrownObjects { get; set; }
+        [XmlElement("Decoration")]
+        public List<Decoration> Decorations { get; set; }
+        [XmlIgnore]
+        public List<Layer> Layers { get; set; }
+        [XmlIgnore]
+        public WorldViewer Viewer { get; set; }
+        [XmlElement(typeof(AccessibleDoor))]
+        [XmlElement("Door")]
+        public List<Door> Doors { get; set; }
+        [XmlElement("Room")]
+        public List<Room> Rooms { get; set; }
+        [XmlIgnore]
+        public Room EnteredRoom { get; set; }
+
+        public Level()
+        {
+            Viewer = new WorldViewer();
+            _collisionDetector = CollisionDetector.GetInstance();
+            _totalCollectableItems = 0;
+
+            CreateCamera();
+            InitializeLayers();
+        }
+
+        private void CreateCamera()
+        {
+            _camera = new Camera(new Viewport(0, 0, 640, 480));
+            _camera.Limits = new Rectangle(0, 0, 1700, 1200);
+        }
+
+        private void InitializeLayers()
+        {
+            Layers = new List<Layer>
+            {
+                new Layer() { Parallax = new Vector2(0.0f, 1.0f)},
+                new Layer() { Parallax = new Vector2(0.1f, 1.0f)},
+                new Layer() { Parallax = new Vector2(0.1f, 1.0f)},
+                new Layer() { Parallax = new Vector2(0.1f, 1.0f)}
+            };
+        }
+
+        public void LoadRoom(Door door)
+        {
+            EnteredRoom = FilterRoom(door.Source);
+            AddRoomToSprites(EnteredRoom);
+        }
+
+        public void AddRoomToSprites(Room room)
+        {
+            Layers[(int)LayerIndex.RoomGameObjects].Sprites.AddRange(room.Decorations);
+            Layers[(int)LayerIndex.RoomGameObjects].Sprites.AddRange(room.Items);
+            Layers[(int)LayerIndex.RoomGameObjects].Sprites.AddRange(room.Obstacles);
+            Layers[(int)LayerIndex.RoomGameObjects].addSprite(room.Door);
+        }
+
+        private Room FilterRoom(String source)
+        {
+            Room filteredRoom = null;
+
+            foreach (Room room in Rooms)
+            {
+                if (room.Name == source)
+                {
+                    filteredRoom = room;
+                    filteredRoom.Initialize(this);
+                }
+            }
+            return filteredRoom;
+        }
+
+        private void AddGameObjectsToSprites()
+        {
+            MovableObjects.Add(Player);
+            Layers[(int)LayerIndex.LevelDecorations].Sprites.AddRange(Backgrounds);
+            Layers[(int)LayerIndex.LevelDecorations].Sprites.AddRange(Decorations);
+
+            Layers[(int)LayerIndex.LevelGameObjects].Sprites.AddRange(Obstacles);
+            Layers[(int)LayerIndex.LevelGameObjects].Sprites.AddRange(Items);
+            Layers[(int)LayerIndex.LevelGameObjects].Sprites.AddRange(MovableObjects);
+            Layers[(int)LayerIndex.LevelGameObjects].Sprites.AddRange(Doors);
+
+            Layers[(int)LayerIndex.Player].Sprites.Add(Player);
+        }
+
+        public Camera GetCamera()
+        {
+            return _camera;
+        }
+
+        public List<MovableObject> GetMovableObjects()
+        {
+            return MovableObjects;
+        }
+
+        public void InitializeGameObjects()
+        {
+            Player.Initialize();
+
+            foreach (Background background in Backgrounds)
+                background.Initialize();
+
+            foreach (Obstacle obstacle in Obstacles)
+                obstacle.Initialize();
+
+            foreach (MovableObject movableObject in MovableObjects)
+            {
+                if (movableObject is Enemy)
+                    InitializeEnemy((Enemy)movableObject);
+            }
+
+            foreach (Decoration decoration in Decorations)
+                decoration.Initialize();
+
+            foreach (Item item in Items)
+            {
+                item.Initialize();
+                item.SetLevel(this);
+            }
+
+            foreach (Door door in Doors)
+                door.Initialize();
+
+            CountTotalCollectableItems();
+        }
+
+        private void InitializeEnemy(Enemy enemy)
+        {
+            enemy.Initialize(true);
+            enemy.SetLevel(this);
+            enemy.SetAttack();
+        }
+
+        public void Load()
+        {
+            Player.SetLevel(this);
+            InitializeGameObjects();
+            AddGameObjectsToSprites();
+            
+        }
+
+        private void CountTotalCollectableItems()
+        {
+            foreach (Item item in Items)
+            {
+                if (item is Diamond)
+                    _totalCollectableItems++;
+            }
+        }
+
+        public int GetTotalCollectableItems()
+        {
+            return _totalCollectableItems;
+        }
+
+        public Door GetDoorOfCollision()
+        {
+            foreach (Door filteredDoor in Doors)
+            {
+                Rectangle filteredDoorRectangle = new Rectangle((int)filteredDoor.Position.X,
+                    (int)filteredDoor.Position.Y, filteredDoor.Texture.Width, filteredDoor.Texture.Height);
+
+                if (_collisionDetector.CheckCollision(Player.CollisionBox, filteredDoorRectangle))
+                {
+                    return filteredDoor;
+                }
+            }
+            return null;
+        }
+    
+
+        public MovableObject GetMovableObjectOfCollision()
+        {
+            foreach (MovableObject movableObject in MovableObjects)
+            {
+                if (movableObject is Enemy)
+                {
+                    Enemy filteredEnemy = (Enemy)movableObject;
+
+                    if (_collisionDetector.CheckCollision(Player.CollisionBox, filteredEnemy.CollisionBox))
+                    {
+                        return filteredEnemy;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public Item GetItemOfCollision()
+        {
+            foreach (Item filteredItem in Items)
+            {
+                if (_collisionDetector.CheckCollision(Player.CollisionBox, filteredItem.CollisionBox))
+                {
+                    return filteredItem;
+                }
+            }
+            return null;
+        }
+        
+        public void ObstacleOfCollision()
+        {
+            foreach (Obstacle filteredObstacle in Obstacles)
+            {
+                foreach (MovableObject filteredMovableObject in MovableObjects)
+                {
+                    if (_collisionDetector.CheckObstacleCollision(filteredMovableObject, filteredObstacle))
+                        filteredMovableObject.HandleCollidedObstacle(filteredObstacle);
+                }
+            }
+        }
+
+        /* herschrijven! */
+       public void CheckAmmoCollision()
+        {
+            for (int enemy_inc = 0; enemy_inc <= MovableObjects.Count - 1; enemy_inc++)
+            {
+                if (MovableObjects[enemy_inc] is Enemy)
+                {
+                    Enemy enemy = (Enemy)MovableObjects[enemy_inc];
+                    if (Player.GetWeapon() is ShootableWeapon)
+                    {
+                        for (int ammunition_inc = 0; ammunition_inc <= ((ShootableWeapon)Player.GetWeapon()).GetAmmo().Count() - 1;
+                            ammunition_inc++)
+                        {
+                            Ammunition ammunition = ((ShootableWeapon)Player.GetWeapon()).GetAmmo()[ammunition_inc];
+
+                            if (ammunition.CheckCollision(enemy))
+                            {
+                                if (enemy.GetHp() <= 0)
+                                {
+                                    MovableObjects.RemoveAt(enemy_inc);
+                                    Layers[1].Sprites.Remove(enemy);
+                                }
+                                else
+                                    enemy.Hit(100);
+
+                                ((ShootableWeapon)Player.GetWeapon()).GetAmmo().Remove(ammunition);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /* herschrijven */
+       /*public void CheckThrowObjectCollision()
+       {
+           Debug.Write(ThrownObjects);
+           Enemy enemy = null;
+
+           foreach (MovableObject movableObject in MovableObjects)
+           {
+               if (movableObject is Enemy)
+               {
+                   enemy = (Enemy)movableObject;
+<<<<<<< .mine
+                   ThrowAttack attack = ((ThrowAttack)enemy.GetAttack());
+                   if (attack != null && attack.GetThrowObject() != null)
+=======
+                   if (typeof(ThrowAttack).IsAssignableFrom(enemy.getAttack().GetType()))
+>>>>>>> .r80
+                   {
+<<<<<<< .mine
+                       ThrowObject thrownObject = attack.GetThrowObject();
+                       if (thrownObject.CheckCollision(Player))
+=======
+                       ThrowAttack attack = ((ThrowAttack)enemy.getAttack());
+                       if (attack != null && attack.getThrowObject() != null)
+>>>>>>> .r80
+                       {
+<<<<<<< .mine
+                           Player.Hit(thrownObject.getDamage());
+                           attack.DeleteThrowObject();
+                           ThrownObjects.Remove(thrownObject);
+=======
+                           ThrowObject thrownObject = attack.getThrowObject();
+                           if (thrownObject.CheckCollision(Player))
+                           {
+                               Player.Hit(thrownObject.getDamage());
+                               attack.deleteThrowObject();
+                               ThrownObjects.Remove(thrownObject);
+                           }
+>>>>>>> .r80
+                       }
+                   }
+               }
+
+               if (typeof(ThrowAttack).IsAssignableFrom(Player.getAttack().GetType()))
+               {
+                   ThrowAttack playerAttack = ((ThrowAttack)Player.GetAttack());
+                   if (playerAttack != null && playerAttack.GetThrowObject() != null)
+                   {
+                       ThrowObject thrownObject = playerAttack.GetThrowObject();
+                       if (thrownObject.CheckCollision(enemy))
+                       {
+                           enemy.Hit(thrownObject.getDamage());
+                           Layers[1].Sprites.Remove(enemy);
+                           playerAttack.DeleteThrowObject();
+                           ThrownObjects.Remove(thrownObject);
+
+                       }
+                   }
+<<<<<<< .mine
+            
+=======
+               }
+               
+>>>>>>> .r80
+           }
+       }*/
+
+       public void UpdateAnimatedDecorations()
+       {
+           foreach (Decoration decoration in Decorations)
+               decoration.Update();
+       }
+
+       private void DrawLayers(GameTime gameTime, SpriteBatch spriteBatch)
+       {
+           Layers[(int)LayerIndex.LevelDecorations].Draw(gameTime, spriteBatch);
+           Layers[(int)LayerIndex.LevelGameObjects].Draw(gameTime, spriteBatch);
+       }
+
+       public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+       {
+           if (EnteredRoom != null)
+           {
+               if (EnteredRoom.IsPresent)
+               {
+                   Layers[(int)LayerIndex.RoomGameObjects].Draw(gameTime, spriteBatch);
+                   Layers[(int)LayerIndex.Player].Draw(gameTime, spriteBatch);
+               }
+               else
+                   DrawLayers(gameTime, spriteBatch);
+           }
+           else
+               DrawLayers(gameTime, spriteBatch);
+
+           if (Player.IsAlive())
+           {
+               Weapon weapon = Player.GetWeapon();
+               weapon.Draw(gameTime, spriteBatch);
+
+               if (Player.IsMeditating())
+               {
+                   Player player = Player;
+                   MeditationBoost meditationBoost = ((MeditationBoost)player.GetBoost());
+                   meditationBoost.Draw(spriteBatch, player.Position);
+               }
+           }
+
+           foreach (MovableObject movableObject in MovableObjects)
+           {
+               if (movableObject is Enemy)
+               {
+                   Enemy enemy = (Enemy)movableObject;
+                   ThrowAttack attack = ((ThrowAttack)enemy.GetAttack());
+
+                   if (attack != null && attack.GetThrowObject() != null)
+                   {
+                       attack.GetThrowObject().Move(Direction.Right, attack.GetThrowObject().Speed);
+                       attack.GetThrowObject().Update(gameTime);
+                       attack.GetThrowObject().Draw(spriteBatch);
+                   }
+               }
+           }
+       }
+
+        public void Update(GameTime gameTime)
+        {
+            _camera.LookAt(Player.Position);     
+            Player.Update(gameTime);
+
+            CheckAmmoCollision();
+
+            foreach (MovableObject movableObject in MovableObjects)
+            {
+                if (movableObject is Enemy)
+                {
+                    Enemy enemy = (Enemy)movableObject;
+                    enemy.Update(gameTime);
+                }
+
+                if (movableObject.GetType() == typeof(LittleEnemy))
+                {
+                    if (((LittleEnemy)movableObject).AttackName == "ThrowAttack")
+                    {
+                        LittleEnemy enemy = (LittleEnemy)movableObject;
+
+                        if (enemy.GetAttack() != null)
+                        {
+                            ThrowAttack attack = ((ThrowAttack)enemy.GetAttack());
+                            Random random = new Random();
+
+                            if (random.Next(0, 1000) > 997)
+                                enemy.GetAttack().Use(enemy);
+                        }
+                    }
+                }
+            }
+
+            ObstacleOfCollision();
+            UpdateAnimatedDecorations();
+           // CheckThrowObjectCollision();
+        }
+    }
+ }
+
+    
+

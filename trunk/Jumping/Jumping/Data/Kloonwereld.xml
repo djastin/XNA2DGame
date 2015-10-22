@@ -1,0 +1,1525 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- 
+    ground_street Width: 845
+-->
+
+<Level>
+  <Name>Kloonwereld</Name>
+
+  <Player>
+    <DefaultState>djastinIdle</DefaultState>
+    <Position>
+      <X>100</X>
+      <Y>380</Y>
+    </Position>
+    <Speed>6.0</Speed>
+    <ScreenBoundWidth>
+      10640
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      480
+    </ScreenBoundHeight>
+
+    <State>
+      <TextureName>djastinIdle</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>djastinWalk</TextureName>
+      <FrameTime>0.2</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+    <CurrentWeapon>gun</CurrentWeapon>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+    <BoostBehavior>MeditationBoost</BoostBehavior>
+
+
+  </Player>
+
+  <!-- above underground -->
+
+  <Background>
+    <TextureName>background</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>0</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>background</TextureName>
+    <Position>
+      <X>630</X>
+      <Y>0</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>background</TextureName>
+    <Position>
+      <X>1260</X>
+      <Y>0</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>background</TextureName>
+    <Position>
+      <X>1890</X>
+      <Y>0</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>background</TextureName>
+    <Position>
+      <X>2520</X>
+      <Y>0</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>background</TextureName>
+    <Position>
+      <X>3150</X>
+      <Y>0</Y>
+    </Position>
+  </Background>
+
+  <!-- underground 1 background -->
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>450</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>630</X>
+      <Y>450</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>1260</X>
+      <Y>450</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>1890</X>
+      <Y>450</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>2520</X>
+      <Y>450</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>3150</X>
+      <Y>450</Y>
+    </Position>
+  </Background>
+
+  <!-- background underground 2 -->
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>940</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>630</X>
+      <Y>940</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>1260</X>
+      <Y>940</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>1890</X>
+      <Y>940</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>2520</X>
+      <Y>940</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>underground</TextureName>
+    <Position>
+      <X>3150</X>
+      <Y>940</Y>
+    </Position>
+  </Background>
+
+  <Obstacle>
+    <TextureName>ground_street</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>ground_street</TextureName>
+    <Position>
+      <X>1000</X>
+      <Y>430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>ground_street</TextureName>
+    <Position>
+      <X>1900</X>
+      <Y>430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>ground_street</TextureName>
+    <Position>
+      <X>2900</X>
+      <Y>430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>ground_street</TextureName>
+    <Position>
+      <X>3800</X>
+      <Y>430</Y>
+    </Position>
+  </Obstacle>
+
+  <ShootableWeapon>
+    <TextureName>gun</TextureName>
+    <Position>
+      <X>2000</X>
+      <Y>415</Y>
+    </Position>
+  </ShootableWeapon>
+
+  <MedKit>
+    <TextureName>medkit</TextureName>
+    <Position>
+      <X>500</X>
+      <Y>410</Y>
+    </Position>
+  </MedKit>
+
+  <MedKit>
+    <TextureName>medkit</TextureName>
+    <Position>
+      <X>1100</X>
+      <Y>410</Y>
+    </Position>
+  </MedKit>
+
+  <MedKit>
+    <TextureName>medkit</TextureName>
+    <Position>
+      <X>2500</X>
+      <Y>410</Y>
+    </Position>
+  </MedKit>
+
+  <MedKit>
+    <TextureName>medkit</TextureName>
+    <Position>
+      <X>4000</X>
+      <Y>410</Y>
+    </Position>
+  </MedKit>
+
+  <Diamond>
+    <TextureName>diamondPurple</TextureName>
+    <Position>
+      <X>2150</X>
+      <Y>395</Y>
+    </Position>
+  </Diamond>
+
+  <Diamond>
+    <TextureName>diamondPurple</TextureName>
+    <Position>
+      <X>2200</X>
+      <Y>395</Y>
+    </Position>
+  </Diamond>
+
+  <Diamond>
+    <TextureName>diamondPurple</TextureName>
+    <Position>
+      <X>2250</X>
+      <Y>395</Y>
+    </Position>
+  </Diamond>
+
+  <Diamond>
+    <TextureName>diamondBlue</TextureName>
+    <Position>
+      <X>3450</X>
+      <Y>395</Y>
+    </Position>
+  </Diamond>
+
+  <Diamond>
+    <TextureName>diamondBlue</TextureName>
+    <Position>
+      <X>3500</X>
+      <Y>395</Y>
+    </Position>
+  </Diamond>
+
+  <Diamond>
+    <TextureName>diamondBlue</TextureName>
+    <Position>
+      <X>3550</X>
+      <Y>395</Y>
+    </Position>
+  </Diamond>
+
+  <!-- underground ground_street -->
+
+  <!-- underground obstacle 1 -->
+
+  <Decoration>
+    <TextureName>grass</TextureName>
+    <Position>
+      <X>700</X>
+      <Y>752.7</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>grass</TextureName>
+    <Position>
+      <X>740</X>
+      <Y>752.7</Y>
+    </Position>
+  </Decoration>
+
+  <Obstacle>
+    <TextureName>stoneCornerLeft</TextureName>
+    <Position>
+      <X>114.9</X>
+      <Y>779.7</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>200</X>
+      <Y>780</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneCornerRight</TextureName>
+    <Position>
+      <X>770</X>
+      <Y>779.7</Y>
+    </Position>
+  </Obstacle>
+
+  <!-- underground obstacle 2 -->
+
+  <Obstacle>
+    <TextureName>stoneCornerLeft</TextureName>
+    <Position>
+      <X>614.9</X>
+      <Y>579.7</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>700</X>
+      <Y>580</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneCornerRight</TextureName>
+    <Position>
+      <X>1270</X>
+      <Y>579.7</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>car</TextureName>
+    <Position>
+      <X>1170</X>
+      <Y>545.7</Y>
+    </Position>
+  </Obstacle>
+
+  <Diamond>
+    <TextureName>diamondBlue</TextureName>
+    <Position>
+      <X>200</X>
+      <Y>710</Y>
+    </Position>
+  </Diamond>
+
+  <Diamond>
+    <TextureName>diamondBlue</TextureName>
+    <Position>
+      <X>250</X>
+      <Y>710</Y>
+    </Position>
+  </Diamond>
+
+  <Diamond>
+    <TextureName>diamondBlue</TextureName>
+    <Position>
+      <X>300</X>
+      <Y>710</Y>
+    </Position>
+  </Diamond>
+
+  <Diamond>
+    <TextureName>diamondBlue</TextureName>
+    <Position>
+      <X>350</X>
+      <Y>710</Y>
+    </Position>
+  </Diamond>
+
+  <Diamond>
+    <TextureName>diamondPurple</TextureName>
+    <Position>
+      <X>2550</X>
+      <Y>860</Y>
+    </Position>
+  </Diamond>
+
+  <Diamond>
+    <TextureName>diamondPurple</TextureName>
+    <Position>
+      <X>2600</X>
+      <Y>860</Y>
+    </Position>
+  </Diamond>
+
+  <Diamond>
+    <TextureName>diamondPurple</TextureName>
+    <Position>
+      <X>2500</X>
+      <Y>860</Y>
+    </Position>
+  </Diamond>
+
+  <Door>
+    <TextureName>undergroundDoor</TextureName>
+    <Position>
+      <X>2690</X>
+      <Y>602.7</Y>
+    </Position>
+    <Source>Egyptian Room</Source>
+  </Door>
+
+  <Decoration>
+    <TextureName>grass</TextureName>
+    <Position>
+      <X>2800</X>
+      <Y>652.7</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>grass</TextureName>
+    <Position>
+      <X>2830</X>
+      <Y>652.7</Y>
+    </Position>
+  </Decoration>
+
+  <!-- underground obstacle 2 -->
+
+  <Obstacle>
+    <TextureName>stoneCornerLeft</TextureName>
+    <Position>
+      <X>2654.9</X>
+      <Y>679.7</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stone</TextureName>
+    <Position>
+      <X>2740</X>
+      <Y>680</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneCornerRight</TextureName>
+    <Position>
+      <X>2819</X>
+      <Y>679.7</Y>
+    </Position>
+  </Obstacle>
+
+  <!-- underground blocks -->
+  <Obstacle>
+    <TextureName>block</TextureName>
+    <Position>
+      <X>2775</X>
+      <Y>891.7</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>block</TextureName>
+    <Position>
+      <X>2815</X>
+      <Y>891.7</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>block</TextureName>
+    <Position>
+      <X>2855</X>
+      <Y>891.7</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>block</TextureName>
+    <Position>
+      <X>2855</X>
+      <Y>851.7</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>block</TextureName>
+    <Position>
+      <X>2895</X>
+      <Y>891.7</Y>
+    </Position>
+  </Obstacle>
+
+  <MedKit>
+    <TextureName>medkit</TextureName>
+    <Position>
+      <X>1800</X>
+      <Y>905</Y>
+    </Position>
+  </MedKit>
+
+  <MedKit>
+    <TextureName>medkit</TextureName>
+    <Position>
+      <X>3500</X>
+      <Y>905</Y>
+    </Position>
+  </MedKit>
+
+
+  <!-- underground ground_street walker -->
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>930</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>574</X>
+      <Y>930</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>1148</X>
+      <Y>930</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>1622</X>
+      <Y>930</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>2196</X>
+      <Y>930</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>2770</X>
+      <Y>930</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stone</TextureName>
+    <Position>
+      <X>3344</X>
+      <Y>930</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stone</TextureName>
+    <Position>
+      <X>3427</X>
+      <Y>930</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stone</TextureName>
+    <Position>
+      <X>3510</X>
+      <Y>930</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stone</TextureName>
+    <Position>
+      <X>3593</X>
+      <Y>930</Y>
+    </Position>
+  </Obstacle>
+
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>3918</X>
+      <Y>930</Y>
+    </Position>
+  </Obstacle>
+
+  <!-- underground 2 -->
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>1430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>630</X>
+      <Y>1430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>1260</X>
+      <Y>1430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>1890</X>
+      <Y>1430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>2520</X>
+      <Y>1430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>3150</X>
+      <Y>1430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>stoneRow</TextureName>
+    <Position>
+      <X>3780</X>
+      <Y>1430</Y>
+    </Position>
+  </Obstacle>
+
+  <LittleEnemy>
+    <DefaultState>danielIdle</DefaultState>
+    <Position>
+      <X>700</X>
+      <Y>350</Y>
+    </Position>
+    <Speed>3.0</Speed>
+    <ScreenBoundWidth>
+      4700
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      480
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>danielIdle</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>danielWalk</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+    <StrategyBehavior>curious</StrategyBehavior>
+    
+  </LittleEnemy >
+
+  <LittleEnemy>
+    <DefaultState>danielIdle</DefaultState>
+    <Position>
+      <X>900</X>
+      <Y>350</Y>
+    </Position>
+    <Speed>3.0</Speed>
+    <ScreenBoundWidth>
+      4700
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      480
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>danielIdle</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>danielWalk</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+    <StrategyBehavior>curious</StrategyBehavior>
+
+  </LittleEnemy >
+
+  <Decoration>
+    <TextureName>house1</TextureName>
+    <Position>
+      <X>1060</X>
+      <Y>70</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>house2</TextureName>
+    <Position>
+      <X>1300</X>
+      <Y>130</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>house3</TextureName>
+    <Position>
+      <X>1425</X>
+      <Y>160</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>house1</TextureName>
+    <Position>
+      <X>1580</X>
+      <Y>70</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>house5</TextureName>
+    <Position>
+      <X>2300</X>
+      <Y>265</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>house4</TextureName>
+    <Position>
+      <X>3200</X>
+      <Y>345</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>house6</TextureName>
+    <Position>
+      <X>4000</X>
+      <Y>95</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <!-- decoration underground -->
+
+  <!-- stone edge left 1 -->
+
+
+
+  <Decoration>
+    <TextureName>ton</TextureName>
+    <Position>
+      <X>2045</X>
+      <Y>893</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>ton</TextureName>
+    <Position>
+      <X>2090</X>
+      <Y>893</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>ton</TextureName>
+    <Position>
+      <X>2135</X>
+      <Y>893</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>diamond</TextureName>
+    <Position>
+      <X>2180</X>
+      <Y>910</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>diamond</TextureName>
+    <Position>
+      <X>2225</X>
+      <Y>910</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>ton</TextureName>
+    <Position>
+      <X>140</X>
+      <Y>893</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>ton</TextureName>
+    <Position>
+      <X>185</X>
+      <Y>893</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>diamond</TextureName>
+    <Position>
+      <X>230</X>
+      <Y>910</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>diamond</TextureName>
+    <Position>
+      <X>265</X>
+      <Y>910</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>diamond</TextureName>
+    <Position>
+      <X>300</X>
+      <Y>910</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>ton</TextureName>
+    <Position>
+      <X>1000</X>
+      <Y>893</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+
+  <Decoration>
+    <TextureName>ton</TextureName>
+    <Position>
+      <X>1045</X>
+      <Y>893</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>ton</TextureName>
+    <Position>
+      <X>1090</X>
+      <Y>893</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>tree1</TextureName>
+    <Position>
+      <X>220</X>
+      <Y>270</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName>tree1</TextureName>
+    <Position>
+      <X>3500</X>
+      <Y>270</Y>
+    </Position>
+    <State>
+      <TextureName></TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>false</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName></TextureName>
+    <Position>
+      <X>600</X>
+      <Y>670</Y>
+    </Position>
+    <State>
+      <TextureName>fire</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName></TextureName>
+    <Position>
+      <X>1250</X>
+      <Y>800</Y>
+    </Position>
+    <State>
+      <TextureName>fire</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName></TextureName>
+    <Position>
+      <X>1750</X>
+      <Y>800</Y>
+    </Position>
+    <State>
+      <TextureName>fire</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName></TextureName>
+    <Position>
+      <X>3000</X>
+      <Y>800</Y>
+    </Position>
+    <State>
+      <TextureName>fire</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName></TextureName>
+    <Position>
+      <X>3500</X>
+      <Y>800</Y>
+    </Position>
+    <State>
+      <TextureName>fire</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <Decoration>
+    <TextureName></TextureName>
+    <Position>
+      <X>4000</X>
+      <Y>800</Y>
+    </Position>
+    <State>
+      <TextureName>fire</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+  </Decoration>
+
+  <EndBoss>
+    <DefaultState>blockA</DefaultState>
+    <Position>
+      <X>4190</X>
+      <Y>730</Y>
+    </Position>
+    <Speed>10.0</Speed>
+    <ScreenBoundWidth>
+      4500
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      480
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>blockA</TextureName>
+      <FrameTime>0.01</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>blockA</TextureName>
+      <FrameTime>0.01</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+    <FrameWidth>50</FrameWidth>
+    <FrameHeight>50</FrameHeight>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+
+    <StrategyBehavior>survival</StrategyBehavior>
+
+  </EndBoss>
+
+  <Room>
+    <Level>
+    <Name>Egyptian Room</Name>
+    <Decoration>
+      <TextureName>egyptBackground</TextureName>
+      <Position>
+        <X>2710</X>
+        <Y>340</Y>
+      </Position>
+    </Decoration>
+
+    <Obstacle>
+      <TextureName>stoneRow</TextureName>
+      <Position>
+        <X>2690</X>
+        <Y>650</Y>
+      </Position>
+    </Obstacle>
+
+    <Obstacle>
+      <TextureName>stoneRow</TextureName>
+      <Position>
+        <X>3130</X>
+        <Y>650</Y>
+      </Position>
+    </Obstacle>
+
+    <Obstacle>
+      <TextureName>egyptPilaarLeft</TextureName>
+      <Position>
+        <X>2677</X>
+        <Y>271</Y>
+      </Position>
+    </Obstacle>
+
+    <Obstacle>
+      <TextureName>egyptPilaarRow</TextureName>
+      <Position>
+        <X>2757</X>
+        <Y>271</Y>
+      </Position>
+    </Obstacle>
+
+    <Obstacle>
+      <TextureName>egyptStoneLeft</TextureName>
+      <Position>
+        <X>2692</X>
+        <Y>347 </Y>
+      </Position>
+    </Obstacle>
+
+    <Obstacle>
+      <TextureName>egyptStoneLeft</TextureName>
+      <Position>
+        <X>2692</X>
+        <Y>423</Y>
+      </Position>
+    </Obstacle>
+
+    <Obstacle>
+      <TextureName>egyptStoneLeft</TextureName>
+      <Position>
+        <X>2692</X>
+        <Y>499</Y>
+      </Position>
+    </Obstacle>
+
+    <Obstacle>
+      <TextureName>egyptStoneLeft</TextureName>
+      <Position>
+        <X>2692</X>
+        <Y>575</Y>
+      </Position>
+    </Obstacle>
+
+    <Obstacle>
+      <TextureName>egyptPilaar</TextureName>
+      <Position>
+        <X>3635</X>
+        <Y>271</Y>
+      </Position>
+    </Obstacle>
+
+    <Obstacle>
+      <TextureName>egyptStone</TextureName>
+      <Position>
+        <X>3640</X>
+        <Y>347 </Y>
+      </Position>
+    </Obstacle>
+
+    <Obstacle>
+      <TextureName>egyptStone</TextureName>
+      <Position>
+        <X>3640</X>
+        <Y>423</Y>
+      </Position>
+    </Obstacle>
+
+    <Obstacle>
+      <TextureName>egyptStone</TextureName>
+      <Position>
+        <X>3640</X>
+        <Y>499</Y>
+      </Position>
+    </Obstacle>
+
+
+    <Obstacle>
+      <TextureName>egyptStone</TextureName>
+      <Position>
+        <X>3640</X>
+        <Y>575</Y>
+      </Position>
+    </Obstacle>
+
+    <Decoration>
+      <TextureName>egyptVase</TextureName>
+      <Position>
+        <X>2770</X>
+        <Y>620</Y>
+      </Position>
+    </Decoration>
+
+    <Decoration>
+      <TextureName>egyptVase</TextureName>
+      <Position>
+        <X>2800</X>
+        <Y>620</Y>
+      </Position>
+    </Decoration>
+
+
+    <Decoration>
+      <TextureName>egyptVase</TextureName>
+      <Position>
+        <X>2860</X>
+        <Y>620</Y>
+      </Position>
+    </Decoration>
+
+    <Decoration>
+      <TextureName>egyptFarao</TextureName>
+      <Position>
+        <X>3540</X>
+        <Y>510</Y>
+      </Position>
+    </Decoration>
+
+    <Present>true</Present>
+
+    <Door>
+      <TextureName>undergroundDoor</TextureName>
+      <Position>
+        <X>3350</X>
+        <Y>570</Y>
+      </Position>
+      <Source>Main</Source>
+    </Door>
+
+      <MedKit>
+        <TextureName>medkit</TextureName>
+        <Position>
+          <X>3000</X>
+          <Y>500</Y>
+        </Position>
+      </MedKit>
+    </Level>
+  </Room>
+  <!--
+  <Door>
+    <TextureName>undergroundDoor</TextureName>
+    <Position>
+      <X>2850</X>
+      <Y>570</Y>
+    </Position>
+    <Source>Main</Source>
+
+    <DefaultState>accessibleDoor1</DefaultState>
+    <State>
+      <TextureName>accessibleDoor1</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+  </Door>
+-->
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>300</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>600</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>900</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>1200</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>1500</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>1800</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>2100</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>2400</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>2700</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>3000</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>3300</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>3600</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>3900</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>4200</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+
+  <Obstacle>
+    <TextureName>painChain</TextureName>
+    <Position>
+      <X>4500</X>
+      <Y>1700</Y>
+    </Position>
+  </Obstacle>
+
+
+
+</Level>
+
+

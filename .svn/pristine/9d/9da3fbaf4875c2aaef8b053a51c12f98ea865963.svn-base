@@ -1,0 +1,425 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Serialization;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Jumping.Models;
+using Jumping.Models.Graphics;
+using Jumping.Models.Core;
+using Jumping.Models.Sprites;
+
+namespace Jumping.Models
+{
+    [XmlInclude(typeof(Player))]
+    [XmlInclude(typeof(Enemy))]
+    [XmlInclude(typeof(EndBoss))]
+    public abstract class MovableObject : ISprite
+    {
+        [XmlIgnore]
+        public Vector2 velocity;
+        [XmlElement("DefaultState")]
+        public String defaultState;
+        [XmlElement ("Position")]
+        public Vector2 position;
+        [XmlIgnore]
+        public float ground;
+        [XmlElement ("Speed")]
+        public float speed;
+        [XmlElement("ScreenBoundWidth")]
+        public int screenBoundWidth;
+        [XmlElement("ScreenBoundHeight")]
+        public int screenBoundHeight;
+        [XmlIgnore]
+        public Rectangle screenBound;
+        [XmlIgnore]
+        public bool isJumping;
+
+        protected Animation animation;
+        protected Animation2 selectedAnimation;
+        private SpriteEffects _effects;
+        [XmlElement(typeof(Animation2))]
+        [XmlElement("State")]
+        public List<Animation2> states = new List<Animation2>();
+           [XmlIgnore]
+        public Animator animator;
+        [XmlIgnore]
+        public float initialVelocity;
+        [XmlIgnore]
+        protected float jumpU;
+        protected float gravity;
+        [XmlIgnore]
+        public float time;
+        [XmlIgnore]
+        protected int damage;
+        
+        [XmlIgnore]
+        public Rectangle collisionBox { get; set; }
+        [XmlIgnore]
+        public SpriteEffects effects { get; set; }
+        [XmlIgnore]
+        public Direction direction;
+        [XmlElement ("FrameWidth")]
+        public int frameWidth; 
+        [XmlElement ("FrameHeight")]
+        public int frameHeight;
+        [XmlIgnore]
+        protected KeyboardState prevKB;
+           [XmlIgnore]
+        public bool isAnimatedObject;
+        protected Level level;
+        [XmlIgnore]
+        public int hp { get; set; }
+        [XmlIgnore]
+        protected HealthBar HealthBar { get; set; }
+
+        /*motion equation using velocity: v = u + at
+         *
+         * velocity = initialVelocity + gravity * time
+         * 
+         */
+       
+        public virtual void Initialize(bool animatedObject)
+        {
+            screenBound = new Rectangle(0, 0, screenBoundWidth, screenBoundHeight);
+            this._Position = position;
+            isAnimatedObject = animatedObject;
+            ground = position.Y;
+            velocity = Vector2.Zero;
+            isJumping = false;
+            jumpU = 2.5f;
+            gravity = -9.8f;
+            time = 0;
+            //damage = 10;
+
+            if (animatedObject)
+            {
+                animator = new Animator();
+                animation = new Animation(TextureLoader.GetInstance().GetTexture(defaultState), position, frameWidth, frameHeight);
+                collisionBox = new Rectangle((int)_Position.X, (int)_Position.Y, animation.frameWidth, animation.frameHeight);
+
+                _effects = SpriteEffects.None;
+
+                foreach (Animation2 animation2 in states)
+                    animation2.Initialize();
+
+                GetAnimation(defaultState);
+            }
+
+            HealthBar = new HealthBar();
+        }
+
+
+        [XmlIgnore]
+        public Vector2 _Position 
+        { 
+            get 
+            { 
+                return position;  
+            }
+            set 
+            { 
+                position = value;
+            }
+        }
+        [XmlIgnore]
+        public float Speed
+        {
+            get
+            {
+                return speed;
+            }
+
+            set
+            {
+                speed = value;
+            }
+        }
+        [XmlIgnore]
+        public Rectangle ScreenBound
+        {
+            get
+            {
+                return screenBound;
+            }
+
+            set
+            {
+                screenBound = value;
+            }
+        }
+        [XmlIgnore]
+        public Animation Animation
+        {
+            get
+            {
+                return animation;
+            }
+
+            set
+            {
+                animation = value;
+            }
+        }
+        [XmlIgnore]
+        public Texture2D Texture 
+        {
+            get
+            {
+                return animation.texture;
+            }
+            set
+            {
+                animation.texture = value;
+            }
+        }
+
+        public void GetAnimation(String Name)
+        {
+            foreach (Animation2 animation2 in states)
+            {
+                if (animation2.TextureName == Name)
+                    selectedAnimation = animation2;
+            }
+        }
+
+         public int getDamage()
+        {
+            return damage;
+        }
+
+
+        public void HandleCollidedObstacle(Obstacle obstacle)
+        {
+            CollisionDetector collisionDetector = CollisionDetector.GetInstance();
+
+            if (obstacle != null)
+            {
+                if (collisionDetector.collisionTop && position.Y + animation.frameHeight > obstacle.position.Y && position.Y
+                    + animation.frameHeight < obstacle.position.Y + obstacle.Texture.Height / 2)
+                {
+                    position.Y = ground = obstacle.position.Y - animation.frameHeight;
+                    velocity.Y = 0;
+                    isJumping = false;
+                    setTime(0);
+                }
+                else if (collisionDetector.collisionBottom && position.Y < obstacle.position.Y + obstacle.Texture.Height)
+                {
+                    position.Y = obstacle.position.Y + obstacle.Texture.Height;
+                    setTime(0);
+                    setInitialVelocity(0);
+                }
+                else if (collisionDetector.collisionLeft && position.X + animation.frameWidth > obstacle.position.X)
+                {
+                    position.X = obstacle.position.X - animation.frameWidth;
+                    velocity.X = 0;
+                }
+                else if (collisionDetector.collisionRight && position.X < obstacle.position.X + obstacle.Texture.Width)
+                {
+                    position.X = obstacle.position.X + obstacle.Texture.Width;
+                    velocity.X = 0;
+                }
+                else if (isJumping == false && ground == obstacle.position.Y - animation.frameHeight)
+                {
+                    isJumping = true;
+                    setInitialVelocity(0);
+
+                }
+            }
+        }
+
+        public int GetHp()
+        {
+            return hp;
+        }
+
+        public void SetHp(int HP)
+        {
+            this.hp = HP;
+        }
+
+
+        public void setDamage(int damage)
+        {
+            this.damage = damage;
+        }
+
+        public void setTime(float t)
+        {
+            this.time = t;
+        }
+
+        private void PerformJumping(GameTime gameTime)
+        {
+            if (isJumping == true)
+            {
+                
+                velocity.Y = (float)(initialVelocity + (gravity * time));
+
+                time += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            /*if (isJumping == true && position.Y > screenBound.Height - animation.frameHeight)
+            {
+                position.Y = ground = screenBound.Height - animation.frameHeight;
+                velocity.Y = 5; //nog niet helemaal goed!
+                isJumping = false;
+                setTime(0);
+            }*/
+        }
+
+        public void Jump(bool state)
+        {
+            isJumping = state;
+        }
+
+        public void Fall2(GameTime gameTime)
+        {
+            velocity.Y = (float)(initialVelocity + (gravity * time));
+
+            time += (float)gameTime.ElapsedGameTime.TotalSeconds;
+        }
+
+        public bool IsAlive()
+        {
+            bool state = true;
+
+            if (hp <= 0)
+            {
+                state = false;
+                hp = 0;
+            }
+            return state;
+        }
+
+        public void Hit(int damage)
+        {
+            if (IsAlive())
+                hp -= damage;
+
+            HealthBar.DecreaseHealth(hp);
+        }
+
+
+        public virtual void Update(GameTime gameTime)
+        {
+            if (isAnimatedObject)
+            {
+                if (Math.Abs(velocity.X) > 0.02f)
+                    animator.PlayAnimation(states[1]);
+                else
+                    animator.PlayAnimation(states[0]);
+            }
+           
+            updatePosition();
+            PerformJumping(gameTime);
+
+            checkScreenBoundaries(gameTime);
+
+            UpdateHealthBarPosition();
+        }
+
+        private void UpdateHealthBarPosition()
+        {
+            HealthBar.Position = position + new Vector2(55, -10);
+        }
+
+        public void updatePosition()
+        {
+            position.X += (velocity.X * speed);
+            position.Y -= (velocity.Y * speed);
+        }
+
+        public virtual void checkScreenBoundaries(GameTime gameTime)
+        {
+            if (position.X < 0)
+            {
+                position.X = 0;
+                velocity.X = 0;
+            }
+            else if (position.X + frameWidth > screenBound.Width)
+            {
+                position.X = screenBound.Width - frameWidth;
+                velocity.X = 0;
+            }
+            if (position.Y < 0)
+            {
+                setInitialVelocity(0);
+                //Fall2(gameTime);
+            }
+        }
+
+        public void Walk(Direction direction, float speed)
+        {
+            
+            if (direction == Direction.Left)
+            {
+                if (velocity.X > -speed)
+                    velocity.X -= (1.0f / 10);
+                else
+                    velocity.X = -1.0f;
+            }
+            else if (direction == Direction.Right)
+            {
+                if (velocity.X < speed)
+                    velocity.X += (1.0f / 10);
+                else
+                    velocity.X = 1.0f;
+            }
+
+            this.direction = direction;
+        }
+
+        public void stopWalking()
+        {
+            
+            if (velocity.X > 0.05 || velocity.X < -0.05)
+                velocity.X *= 0.90f;
+            else
+                velocity.X = 0;
+        }
+
+        public void Fall()
+        {
+            setTime(0);
+            setInitialVelocity(0);
+        }
+
+        public float getInitialVelocity()
+        {
+            return initialVelocity;
+        }
+
+        public void setInitialVelocity(float initialVelocity)
+        {
+            this.initialVelocity = initialVelocity;
+        }
+
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            if (velocity.X > 0)
+            {
+                _effects = SpriteEffects.None;
+            }
+            else if (velocity.X < 0)
+            {
+                _effects = SpriteEffects.FlipHorizontally;
+            }
+            
+            animator.Draw(gameTime, spriteBatch, position, _effects);
+            HealthBar.Draw(spriteBatch);
+        }
+
+       public void SetLevel(Level level)
+        {
+            this.level = level;
+        }
+
+        public Level GetLevel()
+        {
+            return this.level;
+        }
+    }
+}

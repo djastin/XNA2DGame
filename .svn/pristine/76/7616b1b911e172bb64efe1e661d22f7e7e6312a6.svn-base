@@ -1,0 +1,172 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Jumping.Models.Core
+{
+    public class StartMenu
+    {
+        public Dictionary<String, Rectangle> buttonAreas = new Dictionary<string, Rectangle>();
+        public Boolean showMenu;
+        private TextureLoader textureLoader;
+        private Texture2D CijfernariumTexture;
+        private Texture2D CrackenariumTexture;
+        private Texture2D StarbucksalandoriumTexture;
+        private Texture2D KloonwereldTexture;
+        private Texture2D CijfernariumTextureHighlighted;
+        private Texture2D CrackenariumTextureHighlighted;
+        private Texture2D StarbucksalandoriumTextureHighlighted;
+        private Texture2D KloonwereldTextureHighlighted;
+        private Texture2D gameOverButtonHighlighted;
+        private Texture2D gameOverButton;
+        private Texture2D front;
+        private String hoveredOver;
+        private SpriteFont levelsFont;
+        private SpriteFont gameOverFont;
+        private Boolean showGameOver;
+        private Boolean hoveredOverGameOverButton;
+
+        public void setGameOver(Boolean gameOver)
+        {
+            this.showGameOver = gameOver;
+        }
+        public Boolean isGameOver()
+        {
+            return showGameOver;
+        }
+        public void Show(GraphicsDeviceManager graphics)
+        {
+            this.showMenu = true;
+            graphics.PreferredBackBufferWidth = (int)800;
+            graphics.PreferredBackBufferHeight = (int)600;
+            graphics.ApplyChanges();
+        }
+        public void Hide(GraphicsDeviceManager graphics)
+        {
+            this.showMenu = false;
+            graphics.PreferredBackBufferWidth = (int)640;
+            graphics.PreferredBackBufferHeight = (int)480;
+            graphics.ApplyChanges();
+        }
+        public void setFonts(SpriteFont font, SpriteFont gameOverFont)
+        {
+            this.levelsFont = font;
+            this.gameOverFont = gameOverFont;
+        }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            hoveredOverGameOverButton = false;
+            if (showMenu)
+            {
+                if (hoveredOver == "gameOverButton")
+                {
+                    hoveredOverGameOverButton = true;
+                }
+                    switch (hoveredOver)
+                    {
+                        case "danielButton":
+                            spriteBatch.Draw(StarbucksalandoriumTexture, new Vector2(0, 300), Color.White);
+                            spriteBatch.Draw(CijfernariumTexture, new Vector2(400, 0), Color.White);
+                            spriteBatch.Draw(KloonwereldTexture, new Vector2(0, 0), Color.White);
+                            spriteBatch.Draw(CrackenariumTexture, new Vector2(400, 300), Color.White);
+                            if (!showGameOver)
+                            {
+                                spriteBatch.Draw(CrackenariumTextureHighlighted, new Vector2(400, 300), Color.White);
+                                spriteBatch.DrawString(levelsFont, "Crackenarium", new Vector2(600, 450), Color.Turquoise);
+                            }
+                            break;
+                        case "djastinButton":
+                            spriteBatch.Draw(CrackenariumTexture, new Vector2(400, 300), Color.White);
+                            spriteBatch.Draw(StarbucksalandoriumTexture, new Vector2(0, 300), Color.White);
+                            spriteBatch.Draw(CijfernariumTexture, new Vector2(400, 0), Color.White);
+                            spriteBatch.Draw(KloonwereldTexture, new Vector2(0, 0), Color.White);
+                            if (!showGameOver)
+                            {
+                                spriteBatch.Draw(KloonwereldTextureHighlighted, new Vector2(0, 0), Color.White);
+                                spriteBatch.DrawString(levelsFont, "Kloonwereld", new Vector2(200, 150), Color.Wheat);
+                            }
+                            break;
+                        case "gideonButton":
+                            spriteBatch.Draw(CrackenariumTexture, new Vector2(400, 300), Color.White);
+                            spriteBatch.Draw(KloonwereldTexture, new Vector2(0, 0), Color.White);
+                            spriteBatch.Draw(StarbucksalandoriumTexture, new Vector2(0, 300), Color.White);
+                            spriteBatch.Draw(CijfernariumTexture, new Vector2(400, 0), Color.White);
+                            if (!showGameOver)
+                            {
+                                spriteBatch.Draw(CijfernariumTextureHighlighted, new Vector2(400, 0), Color.White);
+                                spriteBatch.DrawString(levelsFont, "Cijfernarium", new Vector2(433, 103), Color.Black);
+                                spriteBatch.DrawString(levelsFont, "Cijfernarium", new Vector2(430, 100), Color.Orange);
+                            }
+                            break;
+                        case "rutgerButton":
+                            spriteBatch.Draw(CrackenariumTexture, new Vector2(400, 300), Color.White);
+                            spriteBatch.Draw(KloonwereldTexture, new Vector2(0, 0), Color.White);
+                            spriteBatch.Draw(StarbucksalandoriumTexture, new Vector2(0, 300), Color.White);
+                            spriteBatch.Draw(CijfernariumTexture, new Vector2(400, 0), Color.White);
+                            if (!showGameOver)
+                            {
+                                spriteBatch.Draw(StarbucksalandoriumTextureHighlighted, new Vector2(0, 300), Color.White);
+                                spriteBatch.DrawString(levelsFont, "Starbucksalandorium", new Vector2(3, 453), Color.Black);
+                                spriteBatch.DrawString(levelsFont, "Starbucksalandorium", new Vector2(0, 450), Color.Lime);
+                            }
+                            break;
+                        default:
+                            spriteBatch.Draw(CrackenariumTexture, new Vector2(400, 300), Color.White);
+                            spriteBatch.Draw(KloonwereldTexture, new Vector2(0, 0), Color.White);
+                            spriteBatch.Draw(StarbucksalandoriumTexture, new Vector2(0, 300), Color.White);
+                            spriteBatch.Draw(CijfernariumTexture, new Vector2(400, 0), Color.White);
+                            spriteBatch.DrawString(levelsFont, "Kies een level", new Vector2(400, 500), Color.Red);
+                            break;
+                    }
+                    spriteBatch.Draw(front, new Vector2(0, 0), Color.White);
+                if (showGameOver)
+                {
+                    if (hoveredOverGameOverButton)
+                    {
+                        spriteBatch.Draw(gameOverButtonHighlighted, new Vector2(300, 300), Color.White);
+                    }
+                    else { spriteBatch.Draw(gameOverButton, new Vector2(300, 300), Color.White); }
+                    spriteBatch.DrawString(gameOverFont, "Game over", new Vector2(300, 200), Color.Black);
+                    spriteBatch.DrawString(gameOverFont, "Game over", new Vector2(300, 200), Color.Red);
+                }
+            }
+        }
+        public void setLevelHighlighted(string levelName)
+        {
+            hoveredOver = levelName;
+        }
+        public void Initialize()
+        {
+            if (buttonAreas.Count() == 0)
+            {
+                Rectangle djastinButtonArea = new Rectangle(0, 0, 400, 300);
+                Rectangle rutgerButtonArea = new Rectangle(0, 300, 400, 300);
+                Rectangle gideonButtonArea = new Rectangle(400, 0, 400, 300);
+                Rectangle danielButtonArea = new Rectangle(400, 300, 400, 300);
+                Rectangle gameOverButtonArea = new Rectangle(300, 300, 200, 100);
+                buttonAreas.Add("djastinButton", djastinButtonArea);
+                buttonAreas.Add("rutgerButton", rutgerButtonArea);
+                buttonAreas.Add("gideonButton", gideonButtonArea);
+                buttonAreas.Add("danielButton", danielButtonArea);
+                buttonAreas.Add("gameOverButton", gameOverButtonArea);
+                textureLoader = TextureLoader.GetInstance();
+                CijfernariumTexture = textureLoader.GetTexture("startMenuCijfernarium");
+                StarbucksalandoriumTexture = textureLoader.GetTexture("startMenuStarbucks");
+                CrackenariumTexture = textureLoader.GetTexture("startMenuCrackenarium");
+                KloonwereldTexture = textureLoader.GetTexture("startMenuKloonwereld");
+                CijfernariumTextureHighlighted = textureLoader.GetTexture("startMenuCijfernariumHighlighted");
+                StarbucksalandoriumTextureHighlighted = textureLoader.GetTexture("startMenuStarbucksHighlighted");
+                CrackenariumTextureHighlighted = textureLoader.GetTexture("startMenuCrackenariumHighlighted");
+                KloonwereldTextureHighlighted = textureLoader.GetTexture("startMenuKloonwereldHighlighted");
+                gameOverButtonHighlighted = textureLoader.GetTexture("gameOverButtonHighlighted");
+                gameOverButton = textureLoader.GetTexture("gameOverButton");
+                front = textureLoader.GetTexture("startMenuBackgroundEmpty");
+                showGameOver = false;
+            }
+        }
+
+    }
+}

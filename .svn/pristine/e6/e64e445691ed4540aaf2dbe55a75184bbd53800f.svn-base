@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Jumping.Models
+{
+    public class Camera
+    {
+        private Vector2 position;
+        private Vector2 origin;
+        private float rotation, zoom;
+        private Viewport view;
+        private Rectangle? limits;
+         
+        public Camera(Viewport viewport)
+        {
+            view = viewport;
+            origin = new Vector2(viewport.Width, viewport.Height);
+            zoom = 1.0f;
+        }
+
+        public Rectangle? Limits
+        {
+            get { return limits; }
+            set
+            {
+                if (value != null)
+                {
+                    limits = new Rectangle
+                    {
+                        X = value.Value.X,
+                        Y = value.Value.Y,
+                        //Width = System.Math.Max(View.Width, value.Value.Width),
+                        Width = System.Math.Max(view.Width, 4500),
+                        Height = System.Math.Max(view.Height, 6000)
+                    };
+                   
+                }
+                else
+                    limits = null;
+            }
+        }
+
+        public Vector2 Position
+        {
+            get { return position; }
+            set 
+            { 
+                position = value;
+                if(Limits != null && zoom == 1.0f && rotation == 0.0f)
+                {
+                    position.X = MathHelper.Clamp(position.X, Limits.Value.X, Limits.Value.X + Limits.Value.Width - view.Width);
+                    position.Y = MathHelper.Clamp(position.Y, Limits.Value.Y, Limits.Value.Y + Limits.Value.Height - view.Height);
+                }
+            
+            }
+        }
+
+        public Matrix getViewMatrix(Vector2 parallax)
+        {
+            return Matrix.CreateTranslation(new Vector3(-Position * parallax, 0.0f)) *
+                Matrix.CreateTranslation(new Vector3(-origin, 0.0f)) *
+                Matrix.CreateRotationZ(rotation) *
+                Matrix.CreateScale(zoom, zoom, 1) *
+                Matrix.CreateTranslation(new Vector3(origin, 0.0f));
+        }
+
+        public void LookAt(Vector2 pos)
+        {
+            Position = pos - new Vector2(view.Width /2f, view.Height - (view.Height)/ 4.35f);
+        }
+    }
+}

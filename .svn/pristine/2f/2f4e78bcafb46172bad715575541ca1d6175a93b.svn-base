@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Level>
+  <Name>Crackenarium</Name>
+
+  <Player>
+    <DefaultState>idleDanielEbola</DefaultState>
+    <Position>
+      <X>1800</X>
+      <Y>380</Y>
+    </Position>
+    <Speed>8.0</Speed>
+    <ScreenBoundWidth>
+      10640
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      480
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>idleDanielEbola</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>walkDaniel</TextureName>
+      <FrameTime>0.2</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>koprolDaniel</TextureName>
+      <FrameTime>0.15</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>danielBoost</TextureName>
+      <FrameTime>0.9</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>danielShoot</TextureName>
+      <FrameTime>0.9</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+
+
+
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+
+    <CurrentWeapon>gun</CurrentWeapon>
+    <BoostBehavior>DrinkBoost</BoostBehavior>
+    <AttackBehavior>headroll</AttackBehavior>
+    <CurrentWeapon>sword</CurrentWeapon>
+  </Player>
+
+  <LittleEnemy>
+    <DefaultState>crackIdle</DefaultState>
+    <Position>
+      <X>1000</X>
+      <Y>350</Y>
+    </Position>
+    <Speed>2.0</Speed>
+    <ScreenBoundWidth>
+      3000
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      1000
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>crackIdle</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>crackWalk</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>crackthrowing</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+    <StrategyBehavior>curious</StrategyBehavior>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+
+  </LittleEnemy>
+
+  <Background>
+    <TextureName>crackachtergrond</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>0</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>crackachtergrond</TextureName>
+    <Position>
+      <X>1531</X>
+      <Y>0</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>crackachtergrond</TextureName>
+    <Position>
+      <X>3026</X>
+      <Y>0</Y>
+    </Position>
+  </Background>
+
+
+
+  //BEGIN
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>847</X>
+      <Y>430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>1694</X>
+      <Y>430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>2541</X>
+      <Y>430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>3388</X>
+      <Y>430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>4000</X>
+      <Y>430</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>zijkantR</TextureName>
+    <Position>
+      <X>4470</X>
+      <Y>250</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>zijkantR</TextureName>
+    <Position>
+      <X>4470</X>
+      <Y>100</Y>
+    </Position>
+  </Obstacle>
+
+
+  <Obstacle>
+    <TextureName>zijkantR</TextureName>
+    <Position>
+      <X>4470</X>
+      <Y>0</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>zijkantL</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>250</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>zijkantL</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>100</Y>
+    </Position>
+  </Obstacle>
+
+
+  <Obstacle>
+    <TextureName>zijkantL</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>0</Y>
+    </Position>
+  </Obstacle>
+
+  <Decoration>
+    <TextureName>lamp</TextureName>
+    <Position>
+      <X>50</X>
+      <Y>100</Y>
+    </Position>
+  </Decoration>
+
+
+  <Decoration>
+    <TextureName>lamp</TextureName>
+    <Position>
+      <X>1445</X>
+      <Y>100</Y>
+    </Position>
+  </Decoration>
+
+
+
+  <Decoration>
+    <TextureName>lamp</TextureName>
+    <Position>
+      <X>2000</X>
+      <Y>-160</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>lamp</TextureName>
+    <Position>
+      <X>3500</X>
+      <Y>-160</Y>
+    </Position>
+  </Decoration>
+  //BOVEN
+
+
+
+
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>600</X>
+      <Y>175</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>300</X>
+      <Y>300</Y>
+    </Position>
+  </Obstacle>
+
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>1600</X>
+      <Y>175</Y>
+    </Position>
+  </Obstacle>
+
+
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>2000</X>
+      <Y>175</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>2500</X>
+      <Y>300</Y>
+    </Position>
+  </Obstacle>
+
+
+  <Obstacle>
+    <TextureName>crackstreet</TextureName>
+    <Position>
+      <X>3000</X>
+      <Y>175</Y>
+    </Position>
+  </Obstacle>
+
+
+</Level>

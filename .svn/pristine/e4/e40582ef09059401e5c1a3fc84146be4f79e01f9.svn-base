@@ -1,0 +1,46 @@
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Jumping.Models
+{
+    public class TextureLoader
+    {
+        private Dictionary<String, Texture2D> textures;
+        private static TextureLoader instance;
+
+        private TextureLoader()
+        {
+            textures = new Dictionary<string, Texture2D>();
+        }
+
+        public static TextureLoader GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new TextureLoader();
+            }
+            return instance;
+        }
+
+        public void addTexture(String Key, Texture2D Texture)
+        {
+            textures.Add(Key, Texture);
+        }
+
+        public Dictionary<String, Texture2D> GetTextures()
+        {
+            return textures;
+        }
+
+        public Texture2D GetTexture(String key)
+        {
+            key += ".xnb";
+            if (textures.ContainsKey(key))
+                return textures[key];
+            return null;
+        }
+    }
+}

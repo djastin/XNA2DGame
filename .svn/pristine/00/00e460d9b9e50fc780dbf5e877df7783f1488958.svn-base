@@ -1,0 +1,70 @@
+﻿using Jumping.Models.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Timers;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using Jumping.Models.Core;
+using Jumping.Models.Sprites;
+
+
+namespace Jumping.Models.Features
+{
+    public class CalculatorBoost : IBoostBehavior
+    {
+        private Player _player;
+        private bool _boostUsing;
+        private Timer _boostTimer = new Timer();
+        private Texture2D _texture;
+        
+        public CalculatorBoost(Texture2D texture)
+        {
+            _boostTimer.Elapsed += new ElapsedEventHandler(StopBoost);
+            _boostTimer.Interval = 5000;
+            _texture = texture;
+
+        }
+
+        public void UseBoost()
+        {
+            if (!_boostUsing)
+            {
+                _player.StartMeditating();
+                _boostTimer.Start();
+                _boostUsing = true;
+                RegenerateHealth();
+            }
+        }
+
+        private void StopBoost(object source, ElapsedEventArgs ex)
+        {
+            _player.StopMeditating();
+            _boostTimer.Stop();
+            _boostUsing = false;
+        }
+
+        public void SetPlayer(Player player)
+        {
+            this._player = player;
+        }
+
+        private void RegenerateHealth()
+        {
+            CollisionDetector col = CollisionDetector.GetInstance();
+
+            foreach (ThrowObject filteredThrowObject in _player.GetLevel().ThrownObjects)
+            {
+                if (col.CheckCollision(_player.CollisionBox, filteredThrowObject.CollisionBox))
+                    _player.Hp = _player.GetHp() + filteredThrowObject.getDamage();
+            }
+        }
+        
+        public void Draw(SpriteBatch batch)
+        {
+            batch.Draw(_texture, _player.Position + new Vector2(30,0), Color.White);
+        }
+
+    }
+}

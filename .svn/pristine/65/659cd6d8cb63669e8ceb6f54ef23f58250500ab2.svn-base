@@ -1,0 +1,369 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Serialization;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Jumping.Models;
+using Jumping.Models.Interfaces;
+using Jumping.Models.Graphics;
+using Jumping.Models.Core;
+using Jumping.Models.Features;
+using Jumping.Models.Sprites;
+using System.Timers;
+
+namespace Jumping
+{
+    [XmlRoot(ElementName = "Player")]
+    public class Player : MovableObject
+    {
+       
+        protected List<Weapon> weapons = new List<Weapon>();
+        protected Weapon currentWeapon;
+        [XmlElement("CurrentWeapon")]
+        public String selectedWeapon;
+        private int weaponIndex;
+
+        [XmlElement("AttackBehavior")]
+        public String attackName;
+        private IAttackBehavior attack;
+        [XmlElement("BoostBehavior")]
+        public String boostName;
+        private IBoostBehavior boost;
+        private Boolean meditating;
+        private Boolean doesDamage;
+        private Timer shootTimer;
+        [XmlIgnore]
+        public List<Item> CollectedItems { get; set; }
+
+        public void Initialize()
+        {
+            base.Initialize(true);
+            doesDamage = false;
+            weapons.Add(FeatureLoader.GetInstance().GetWeapon(selectedWeapon));
+            attack = FeatureLoader.GetInstance().GetAttack(attackName);
+            boost = FeatureLoader.GetInstance().GetBoost(boostName);
+            SetCurrentWeapon(0);
+            weaponIndex = 0;
+            SetHp(1000);
+            shootTimer = new Timer();
+            shootTimer.Elapsed += new ElapsedEventHandler(stopAnimateShoot);
+            shootTimer.Interval = 500;
+            
+            
+            boost.SetPlayer(this);
+            attack.SetPlayer(this);
+
+            CollectedItems = new List<Item>();
+        }
+
+
+
+        public void AddItem(Item item)
+        {
+            CollectedItems.Add(item);
+        }
+
+        public bool IsCompletedItems()
+        {
+            if (level.GetTotalCollectableItems() == CollectedItems.Count)
+                return true;
+            else
+                return false;
+        }
+
+        public IAttackBehavior getAttack()
+        {
+            return attack;
+        }
+
+        public void setDoesDamage(Boolean lean)
+        {
+            doesDamage = lean;
+        }
+
+        public Boolean isMeditating()
+        {
+            return meditating;
+        }
+        public void startMeditating()
+        {
+            this.meditating = true;
+        }
+        public void stopMeditating()
+        {
+            this.meditating = false;
+        }
+        public IBoostBehavior getBoost()
+        {
+            return boost;
+        }
+
+        public void SetBoost(IBoostBehavior b)
+        {
+            boost = b;
+        }
+
+        public void SetCurrentWeapon(int which)
+        {
+            currentWeapon = weapons.ElementAt(which);
+            currentWeapon._Position = position;
+        }
+
+        public Weapon GetWeapon()
+        {
+            return currentWeapon;
+        }
+
+        public List<Weapon> getWeapons()
+        {
+            return weapons;
+        }
+
+        public void addWeapon(Weapon weapon)
+        {
+            weapons.Add(weapon);
+
+            if (currentWeapon == null)
+                SetCurrentWeapon(0);
+        }
+
+        public void SwitchWeapon()
+        {
+            if (weaponIndex < weapons.Count())
+            {
+                SetCurrentWeapon(weaponIndex);
+                weaponIndex++;
+            }
+            else
+                weaponIndex = 0;
+        }
+
+        public void updateAmmoPosition(Ammunition ammo)
+        {
+            if (!ammo.isFired)
+            {
+                ammo.direction = this.direction;
+                ammo.Move(ammo.direction);
+                ammo.isFired = true;
+            }
+            if
+             (ammo.isFired)
+            {
+                ammo.Move(ammo.direction);
+            }
+        }
+
+        public void UpdateWeaponPosition(GameTime gameTime)
+        {
+            if (currentWeapon != null)
+            {
+                currentWeapon._Position = _Position + new Vector2(15, 30);
+                if (currentWeapon is ShootableWeapon)
+                {
+                    ShootableWeapon shootableWeapon = (ShootableWeapon)currentWeapon;
+                    if (shootableWeapon.getAmmo().Count() > 0)
+                    {
+                        for (int ammo_inc = 0; ammo_inc <= shootableWeapon.getAmmo().Count() - 1; ammo_inc++)
+                        {
+                            Ammunition selectedAmmo = shootableWeapon.getAmmo()[ammo_inc];
+                            updateAmmoPosition(selectedAmmo);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void Fire()
+        {
+            if (currentWeapon is ShootableWeapon)
+            {
+                ShootableWeapon weapon = (ShootableWeapon)currentWeapon;
+                Ammunition ammo = loadAmmo();
+                ammo.Initialize();
+
+                if (weapon.isCooledDown)
+                {
+                    animateShoot();
+                    weapon.addAmmo(ammo);
+                }
+            }
+            else
+            {
+                currentWeapon.Use();
+            }
+        }
+
+        public Ammunition loadAmmo()
+        {
+            Ammunition ammo = new Ammunition();
+            ammo._Position = currentWeapon._Position;
+
+            ammo.TextureName = "gun1_ammo";
+            ammo.Initialize();
+
+            return ammo;
+        }
+
+        public void Input(KeyboardState keyState, GameTime gameTime)
+        {
+
+            if (keyState.IsKeyDown(Keys.Space) && (isJumping == false || _Position.Y == ground))
+            {
+                Jump(true);
+                setInitialVelocity(jumpU);
+                ///animator.PlayAnimation(states[2]);
+
+            }
+            if (keyState.IsKeyDown(Keys.Left) && !keyState.IsKeyDown(Keys.Right))
+            {
+                if (keyState.IsKeyDown(Keys.A))
+                    Walk(Direction.Left, 2f);
+                else
+                {
+                    Walk(Direction.Left, 1f);
+                }
+            }
+            else if (!keyState.IsKeyDown(Keys.Left) && keyState.IsKeyDown(Keys.Right))
+            {
+                if (keyState.IsKeyDown(Keys.A))
+                    Walk(Direction.Right, 2f);
+                else
+                    Walk(Direction.Right, 1f);
+
+                this.effects = SpriteEffects.None;
+            }
+            if (keyState.IsKeyDown(Keys.Q))
+            {
+                attack.Use(gameTime);
+            }
+            if (keyState.IsKeyDown(Keys.E))
+            {
+                boost.UseBoost();
+
+            }
+            
+
+            stopWalking();
+
+
+            prevKB = keyState;
+        }
+
+      
+        public void addHp(int hp)
+        {
+            this.hp += hp;
+        }
+
+
+          public void animateShoot()
+        {
+            if (states.Count > 3)
+            {
+               shootTimer.Start();
+               this.isAnimatedObject = false;
+            animator.PlayAnimation(states[4]);
+            }
+            else
+                return;
+            
+        }
+
+          private void stopAnimateShoot(object source, ElapsedEventArgs e)
+          {
+
+              this.isAnimatedObject = true;
+              shootTimer.Stop();
+          }
+
+
+          public void HandleEnemyCollision()
+          {
+              MovableObject obj = level.GetMovableObjectOfCollision();
+              if (obj is Enemy && obj != null)
+              {
+                  Enemy enemy = (Enemy)obj;
+                  if (!doesDamage)
+                  {
+                      //   Enemy enemy = (Enemy)obj;
+                      Hit(enemy.getDamage());
+                      if (collisionBox.Right > enemy.collisionBox.Left)
+                      {
+                          Walk(Direction.Right, 1f);
+                      }
+                      if (collisionBox.Left < enemy.collisionBox.Right)
+                      {
+                          Walk(Direction.Left, 1f);
+                      }
+                  }
+                  else 
+                  {
+                      enemy.Hit(this.damage);
+                      if (enemy.collisionBox.Right > this.collisionBox.Left)
+                      {
+                          enemy.Walk(Direction.Right, 1f);
+                      }
+                      if (this.collisionBox.Left < this.collisionBox.Right)
+                      {
+                          enemy.Walk(Direction.Left, 1f);
+                      }
+                  }
+
+              }
+          }
+        public void HandleDoorCollision()
+        {
+            Door door = level.GetDoorOfCollision();
+            if (door != null)
+            {
+                level.LoadRoom(door);
+            }
+        }
+
+        public void HandleItemCollision()
+        {
+            Item item = level.GetItemOfCollision();
+            if (item != null && item is MedKit)
+            {
+                MedKit k = (MedKit)item;
+                hp = k.Use();
+                level.Items.Remove(item);
+                level.Layers[1].sprites.Remove(item);
+            }
+            if (item != null && item is BadGrade)
+            {
+                BadGrade b = (BadGrade)item;
+                b.Use();
+                level.Items.Remove(item);
+                level.Layers[1].sprites.Remove(item);
+            }
+            if (item != null && item is Diamond)
+            {
+                Diamond d = (Diamond)item;
+                d.Use();
+                level.Items.Remove(item);
+                level.Layers[1].sprites.Remove(item);
+
+                CollectedItems.Add(item);
+            }
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (IsAlive())
+            {
+                attack.Update(gameTime);
+                HandleEnemyCollision();
+                HandleItemCollision();
+                HandleDoorCollision();
+                UpdateWeaponPosition(gameTime);
+            }
+
+            base.Update(gameTime);
+        }
+    }
+}

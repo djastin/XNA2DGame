@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Level>
+  <Name>GideonLand</Name>
+
+  <Player>
+    <DefaultState>GideonIdle</DefaultState>
+    <Position>
+      <X>100</X>
+      <Y>380</Y>
+    </Position>
+    <Speed>6.0</Speed>
+    <ScreenBoundWidth>
+      10640
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      480
+    </ScreenBoundHeight>
+
+    <State>
+      <TextureName>GideonIdle</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>GideonWalk</TextureName>
+      <FrameTime>0.2</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+    <CurrentWeapon>sword</CurrentWeapon>
+  </Player>
+</Level>

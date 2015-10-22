@@ -1,0 +1,1009 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Level>
+  <Name>Cijfernarium</Name>
+
+  <Player>
+      <DefaultState>PlayerIdlePose</DefaultState>
+      <Position>
+        <X>10</X>
+        <Y>480</Y>
+      </Position>
+      <Speed>5.0</Speed>
+      <ScreenBoundWidth>
+        4500
+      </ScreenBoundWidth>
+      <ScreenBoundHeight>
+        480
+      </ScreenBoundHeight>
+      <State>
+        <TextureName>PlayerIdlePose</TextureName>
+        <FrameTime>0.1</FrameTime>
+        <IsLooping>true</IsLooping>
+      </State>
+
+      <State>
+        <TextureName>PlayerRunningPose</TextureName>
+        <FrameTime>0.2</FrameTime>
+        <IsLooping>true</IsLooping>
+      </State>
+
+      <FrameWidth>60</FrameWidth>
+      <FrameHeight>37</FrameHeight>
+      <CurrentWeapon>sword</CurrentWeapon>
+      
+      <AttackBehavior>ThrowAttack</AttackBehavior>
+      <BoostBehavior>MeditationBoost</BoostBehavior>
+    </Player>
+  
+  <!--Backgrounds above ground-->
+
+  <Background>
+    <TextureName>CityBackground</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>-125</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>CityBackground</TextureName>
+    <Position>
+      <X>1450</X>
+      <Y>-125</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>CityBackground</TextureName>
+    <Position>
+      <X>2900</X>
+      <Y>-125</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>CityBackground</TextureName>
+    <Position>
+      <X>4350</X>
+      <Y>-125</Y>
+    </Position>
+  </Background>
+  
+  <!--street above ground-->
+
+  <Obstacle>
+    <TextureName>Street</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>520</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Street</TextureName>
+    <Position>
+      <X>512</X>
+      <Y>520</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Street</TextureName>
+    <Position>
+      <X>1024</X>
+      <Y>520</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Street</TextureName>
+    <Position>
+      <X>1536</X>
+      <Y>520</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Street</TextureName>
+    <Position>
+      <X>2560</X>
+      <Y>520</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Street</TextureName>
+    <Position>
+      <X>3072</X>
+      <Y>520</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Street</TextureName>
+    <Position>
+      <X>3584</X>
+      <Y>520</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Street</TextureName>
+    <Position>
+      <X>4096</X>
+      <Y>520</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Street</TextureName>
+    <Position>
+      <X>4598</X>
+      <Y>520</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>270</X>
+      <Y>420</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>200</X>
+      <Y>320</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>100</X>
+      <Y>200</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>100</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>600</X>
+      <Y>420</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>700</X>
+      <Y>400</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>2000</X>
+      <Y>400</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>1800</X>
+      <Y>300</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>2000</X>
+      <Y>200</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>2200</X>
+      <Y>300</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>2800</X>
+      <Y>450</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>3000</X>
+      <Y>400</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>3200</X>
+      <Y>300</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>3400</X>
+      <Y>200</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Platform</TextureName>
+    <Position>
+      <X>4500</X>
+      <Y>400</Y>
+    </Position>
+  </Obstacle>
+  
+  <!--street decorations above ground-->
+
+  <Decoration>
+    <TextureName>StreetDecoration</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>470</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>StreetDecoration</TextureName>
+    <Position>
+      <X>512</X>
+      <Y>470</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>StreetDecoration</TextureName>
+    <Position>
+      <X>1024</X>
+      <Y>470</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>StreetDecoration</TextureName>
+    <Position>
+      <X>1536</X>
+      <Y>470</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>StreetDecoration</TextureName>
+    <Position>
+      <X>2560</X>
+      <Y>470</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>StreetDecoration</TextureName>
+    <Position>
+      <X>3072</X>
+      <Y>470</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>StreetDecoration</TextureName>
+    <Position>
+      <X>3584</X>
+      <Y>470</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>StreetDecoration</TextureName>
+    <Position>
+      <X>4096</X>
+      <Y>470</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>StreetDecoration</TextureName>
+    <Position>
+      <X>4598</X>
+      <Y>470</Y>
+    </Position>
+  </Decoration>
+  
+  <!--Enemy in the city above ground-->
+
+  <LittleEnemy>
+    <DefaultState>NerdIdlePose</DefaultState>
+    <Position>
+      <X>300</X>
+      <Y>480</Y>
+    </Position>
+    <Speed>2.0</Speed>
+    <ScreenBoundWidth>
+      4500
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      1000
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>NerdIdlePose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>NerdRunningPose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+    <StrategyBehavior>curious</StrategyBehavior>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+  </LittleEnemy>
+
+  <LittleEnemy>
+    <DefaultState>NerdIdlePose</DefaultState>
+    <Position>
+      <X>600</X>
+      <Y>480</Y>
+    </Position>
+    <Speed>2.0</Speed>
+    <ScreenBoundWidth>
+      4500
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      1000
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>NerdIdlePose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>NerdRunningPose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+    <StrategyBehavior>curious</StrategyBehavior>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+  </LittleEnemy>
+
+  <LittleEnemy>
+    <DefaultState>NerdIdlePose</DefaultState>
+    <Position>
+      <X>900</X>
+      <Y>480</Y>
+    </Position>
+    <Speed>2.0</Speed>
+    <ScreenBoundWidth>
+      4500
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      1000
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>NerdIdlePose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>NerdRunningPose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+    <StrategyBehavior>curious</StrategyBehavior>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+  </LittleEnemy>
+
+  <LittleEnemy>
+    <DefaultState>NerdIdlePose</DefaultState>
+    <Position>
+      <X>2500</X>
+      <Y>480</Y>
+    </Position>
+    <Speed>2.0</Speed>
+    <ScreenBoundWidth>
+      4500
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      1000
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>NerdIdlePose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>NerdRunningPose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+    <StrategyBehavior>curious</StrategyBehavior>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+  </LittleEnemy>
+
+  <LittleEnemy>
+    <DefaultState>NerdIdlePose</DefaultState>
+    <Position>
+      <X>2800</X>
+      <Y>480</Y>
+    </Position>
+    <Speed>2.0</Speed>
+    <ScreenBoundWidth>
+      4500
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      1000
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>NerdIdlePose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>NerdRunningPose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+    <StrategyBehavior>curious</StrategyBehavior>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+  </LittleEnemy>
+
+  <LittleEnemy>
+    <DefaultState>NerdIdlePose</DefaultState>
+    <Position>
+      <X>3300</X>
+      <Y>480</Y>
+    </Position>
+    <Speed>2.0</Speed>
+    <ScreenBoundWidth>
+      4500
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      1000
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>NerdIdlePose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>NerdRunningPose</TextureName>
+      <FrameTime>0.5</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+    <FrameWidth>60</FrameWidth>
+    <FrameHeight>37</FrameHeight>
+    <StrategyBehavior>curious</StrategyBehavior>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+  </LittleEnemy>
+
+  <EndBoss>
+    <DefaultState>EndBossIdle</DefaultState>
+    <Position>
+      <X>800</X>
+      <Y>480</Y>
+    </Position>
+    <Speed>3.0</Speed>
+    <ScreenBoundWidth>
+      4500
+    </ScreenBoundWidth>
+    <ScreenBoundHeight>
+      480
+    </ScreenBoundHeight>
+    <State>
+      <TextureName>EndBossIdle</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+    <State>
+      <TextureName>EndBossRunning</TextureName>
+      <FrameTime>0.1</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+    <FrameWidth>50</FrameWidth>
+    <FrameHeight>50</FrameHeight>
+    <StrategyBehavior>survival</StrategyBehavior>
+    <AttackBehavior>ThrowAttack</AttackBehavior>
+  </EndBoss>
+  <!--items above ground-->
+
+  <MedKit>
+    <TextureName>Medkit</TextureName>
+    <Position>
+      <X>2000</X>
+      <Y>350</Y>
+    </Position>
+  </MedKit>
+
+  <MedKit>
+    <TextureName>Medkit</TextureName>
+    <Position>
+      <X>4000</X>
+      <Y>520</Y>
+    </Position>
+  </MedKit>
+
+  <BadGrade>
+    <TextureName>Badgrade</TextureName>
+    <Position>
+      <X>80</X>
+      <Y>480</Y>
+    </Position>
+  </BadGrade>
+  
+  <BadGrade>
+    <TextureName>Badgrade</TextureName>
+    <Position>
+      <X>4000</X>
+      <Y>480</Y>
+    </Position>
+  </BadGrade>
+
+  <BadGrade>
+    <TextureName>Badgrade</TextureName>
+    <Position>
+      <X>4000</X>
+      <Y>480</Y>
+    </Position>
+  </BadGrade>
+
+  <BadGrade>
+    <TextureName>Badgrade</TextureName>
+    <Position>
+      <X>1500</X>
+      <Y>710</Y>
+    </Position>
+  </BadGrade>
+
+  <BadGrade>
+    <TextureName>Badgrade</TextureName>
+    <Position>
+      <X>80</X>
+      <Y>0</Y>
+    </Position>
+  </BadGrade>
+
+  <BadGrade>
+    <TextureName>Badgrade</TextureName>
+    <Position>
+      <X>4000</X>
+      <Y>710</Y>
+    </Position>
+  </BadGrade>
+  <!--the second level-->
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>173</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>346</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>519</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundLeftWall</TextureName>
+    <Position>
+      <X>692</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundFacility</TextureName>
+    <Position>
+      <X>885</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  
+
+  <Background>
+    <TextureName>undergroundRightWall</TextureName>
+    <Position>
+      <X>1365</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>1535</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>1708</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>1881</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>2054</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>2227</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>2400</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>2573</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>2746</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>2919</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundLeftWall</TextureName>
+    <Position>
+      <X>3092</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundFacility</TextureName>
+    <Position>
+      <X>3284</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundRightWall</TextureName>
+    <Position>
+      <X>3764</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>3933</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>4106</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>4279</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>undergroundWall</TextureName>
+    <Position>
+      <X>4452</X>
+      <Y>565</Y>
+    </Position>
+  </Background>
+<!--end background second level-->
+
+  <Decoration>
+    <TextureName>undergroundfloorDecoration</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>741</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>undergroundfloorDecoration</TextureName>
+    <Position>
+      <X>1622</X>
+      <Y>741</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>undergroundfloorDecoration</TextureName>
+    <Position>
+      <X>2433</X>
+      <Y>741</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>undergroundfloorDecoration</TextureName>
+    <Position>
+      <X>3244</X>
+      <Y>741</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName>undergroundfloorDecoration</TextureName>
+    <Position>
+      <X>4045</X>
+      <Y>741</Y>
+    </Position>
+  </Decoration>
+
+  <Decoration>
+    <TextureName></TextureName>
+    <Position>
+      <X>2000</X>
+      <Y>687</Y>
+    </Position>
+    <State>
+      <TextureName>BeggarDecoration</TextureName>
+      <FrameTime>0.4</FrameTime>
+      <IsLooping>true</IsLooping>
+    </State>
+
+  </Decoration>
+  <!--end decoration second level-->
+  <Obstacle>
+    <TextureName>undergroundfloor</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>758</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>undergroundfloor</TextureName>
+    <Position>
+      <X>1622</X>
+      <Y>758</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>undergroundfloor</TextureName>
+    <Position>
+      <X>2433</X>
+      <Y>758</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>undergroundfloor</TextureName>
+    <Position>
+      <X>3244</X>
+      <Y>758</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>undergroundfloor</TextureName>
+    <Position>
+      <X>4045</X>
+      <Y>758</Y>
+    </Position>
+  </Obstacle>
+  <Obstacle>
+    
+    <TextureName>Box</TextureName>
+    <Position>
+      <X>250</X>
+      <Y>710</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Box</TextureName>
+    <Position>
+      <X>638</X>
+      <Y>710</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Box</TextureName>
+    <Position>
+      <X>2050</X>
+      <Y>710</Y>
+    </Position>
+  </Obstacle>
+  
+  <Obstacle>
+    <TextureName>Box</TextureName>
+    <Position>
+      <X>2105</X>
+      <Y>710</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Box</TextureName>
+    <Position>
+      <X>2080</X>
+      <Y>660</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Box</TextureName>
+    <Position>
+      <X>3000</X>
+      <Y>710</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>Box</TextureName>
+    <Position>
+      <X>3800</X>
+      <Y>710</Y>
+    </Position>
+  </Obstacle>
+
+  <!--Sewer level-->
+  
+  <!--Sewerbackground and decorations-->
+
+  <Background>
+    <TextureName>SewerBackground</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>748</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>SewerBackground</TextureName>
+    <Position>
+      <X>1450</X>
+      <Y>748</Y>
+    </Position>
+  </Background>
+
+  <Background>
+    <TextureName>SewerBackground</TextureName>
+    <Position>
+      <X>2898</X>
+      <Y>748</Y>
+    </Position>
+  </Background>
+
+ 
+  <!--Obstacles sewer-->
+
+  <Obstacle>
+    <TextureName>SewerFloor</TextureName>
+    <Position>
+      <X>0</X>
+      <Y>917</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>SewerFloor</TextureName>
+    <Position>
+      <X>1450</X>
+      <Y>917</Y>
+    </Position>
+  </Obstacle>
+
+  <Obstacle>
+    <TextureName>SewerFloor</TextureName>
+    <Position>
+      <X>2898</X>
+      <Y>917</Y>
+    </Position>
+  </Obstacle>
+</Level>

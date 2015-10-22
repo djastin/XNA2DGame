@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Jumping.Models
+{
+    public class Layer
+    {
+        public Vector2 parallax { get; set; }
+        public List<ISprite> sprites { get; private set; }
+
+        private Camera camera;
+
+        public Layer(Camera camera)
+        {
+            this.camera = camera;
+            parallax = Vector2.One;
+            sprites = new List<ISprite>();
+        }
+
+        public void addSprite(ISprite sprite)
+        {
+            sprites.Add(sprite);
+        }
+
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            for (int sprite_i = 0; sprite_i <= sprites.Count() - 1; sprite_i++ )
+            {
+                sprites[sprite_i].Draw(gameTime,spriteBatch);
+            }
+        }
+    }
+}

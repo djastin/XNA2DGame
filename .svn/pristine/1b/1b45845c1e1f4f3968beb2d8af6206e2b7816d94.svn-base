@@ -1,0 +1,74 @@
+﻿using Jumping.Models.Interfaces;
+using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Jumping.Models.Features
+{
+    public class SurvivalStrategy : IStrategyBehavior
+    {
+        private Player player;
+        private Enemy enemy;
+
+        private bool playerPassed;
+
+        public void SetEnemy(Enemy enemy)
+        {
+            this.enemy = enemy;
+        }
+
+        public void SetPlayer(Player player)
+        {
+            this.player = player;
+        }
+
+        public void Strategy()
+        {
+            float distance = CalculateDistance();
+            Random random = new Random();
+
+            if ((int)distance > 0 && (int)distance < 400)
+            {
+                if (player.direction == Direction.Left && !playerPassed)
+                {
+                    enemy.Walk(Direction.Right, random.Next(4));
+                   
+                }
+                else if (player.direction == Direction.Right && !playerPassed)
+                {
+                    enemy.Walk(Direction.Left, random.Next(2));
+                }
+                else
+                {
+                    enemy.Walk(Direction.Right, random.Next(2));
+                }
+            }
+
+            if (random.Next(500) == 2)
+            {
+                ((MovableObject)enemy).Jump(true);
+                ((MovableObject)enemy).setInitialVelocity(4.5f);
+            }
+
+            
+        }
+
+        private float CalculateDistance()
+        {
+            float distance = 0;
+            playerPassed = false;
+
+            if (player.position.X > enemy.position.X)
+            {
+                distance = player.position.X - enemy.position.X;
+                playerPassed = true;
+            }
+            else if (enemy.position.X > player.position.X)
+                distance = enemy.position.X - player.position.X;
+
+            return distance;
+        }
+    }
+}

@@ -1,0 +1,372 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+
+using Jumping.Models;
+using Jumping.Controllers;
+using Jumping.Models.Core;
+using Jumping.Models.Graphics;
+using Jumping.Models.Sprites;
+using Jumping.Models.Features;
+using Jumping.Models.Interfaces;
+using System.IO;
+using System.Diagnostics;
+
+namespace Jumping
+{
+    public class Game1 : Microsoft.Xna.Framework.Game
+    {
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch;
+        public String path;
+        private KeyboardState prevKB;
+        XmlManager<Level> xmlManager;
+        private Level selectedLevel;
+        private SpriteFont font, deadFont;
+        GameController controller;
+        private String xmlPath;
+        private TextureLoader textureLoader;
+        private FeatureLoader featureLoader;
+        private StartMenu startMenu;
+        MouseState mouseStateCurrent, mouseStatePrevious;
+
+        public Game1()
+        {
+            graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferWidth = (int)640;
+            graphics.PreferredBackBufferHeight = (int)480;
+            graphics.ApplyChanges();
+            IsMouseVisible = true;
+        }
+
+        protected override void Initialize()
+        {
+
+            featureLoader = FeatureLoader.GetInstance();
+            textureLoader = TextureLoader.GetInstance();
+            startMenu = new StartMenu();
+            font = Content.Load<SpriteFont>("Fonts/Font");
+            deadFont = Content.Load<SpriteFont>("Fonts/DeadFont");
+            SpriteFont levelsFont = Content.Load<SpriteFont>("Fonts/levelsFont"); 
+            SpriteFont gameOverFont = Content.Load<SpriteFont>("Fonts/gameOverFont"); 
+            startMenu.setFonts(levelsFont, gameOverFont: gameOverFont); 
+
+            Loadlistontent("Starbucksalandorium");
+            Loadlistontent("Kloonwereld");
+            Loadlistontent("Crackenarium");
+            Loadlistontent("Gideon");
+            Loadlistontent("Startmenu");
+            LoadFeatures();
+            startMenu.Initialize();
+            base.Initialize();
+        }
+        public void Loadlistontent(string contentFolder)
+        {
+            DirectoryInfo dir = new DirectoryInfo(Content.RootDirectory + "/" + contentFolder);
+            if (!dir.Exists)
+                throw new DirectoryNotFoundException();
+
+            FileInfo[] files = dir.GetFiles("*.*");
+            foreach (FileInfo file in files)
+            {
+                if (!textureLoader.GetTextures().ContainsKey(file.Name))
+                {
+                    string key = Path.GetFileNameWithoutExtension(file.Name);
+
+
+                    Texture2D texture = Content.Load<Texture2D>(contentFolder + "/" + key);
+                    textureLoader.addTexture(file.Name, texture);
+                }
+            }
+        }
+        private void LoadFeatures()
+        {
+            Weapon gun1, sword1, tazer;
+            gun1 = new ShootableWeapon();
+            gun1.textureName = "gun";
+            gun1.Initialize();
+
+            sword1 = new Weapon();
+            sword1.textureName = "sword";
+            sword1.Initialize();
+
+            tazer = new Weapon();
+            tazer.textureName = "tazer";
+            tazer.Initialize();
+
+            IStrategyBehavior curiousStrategy, survivalStrategy;
+            curiousStrategy = new CuriousStrategy();
+            survivalStrategy = new SurvivalStrategy();
+
+            IAttackBehavior Throwattack;
+            Throwattack = new ThrowAttack();
+            ((ThrowAttack)Throwattack).setLevel(selectedLevel);
+            featureLoader.addAttack("ThrowAttack", Throwattack);
+            IAttackBehavior headRollAttack = new HeadRollAttack();
+            featureLoader.addAttack("headroll", headRollAttack);
+
+            IBoostBehavior meditationBoost;
+            meditationBoost = new MeditationBoost(textureLoader.GetTexture("meditationWings"));
+            featureLoader.addBoost("MeditationBoost", meditationBoost);
+
+
+            IBoostBehavior drinkBoost;
+            drinkBoost = new DrinkBoost();
+            featureLoader.addBoost("DrinkBoost", drinkBoost);
+
+
+            IBoostBehavior calculatorBoost;
+            calculatorBoost = new CalculatorBoost(textureLoader.GetTexture("healthLoader"));
+            featureLoader.addBoost("CalcBoost", calculatorBoost);
+
+            featureLoader.addStrategy("curious", curiousStrategy);
+            featureLoader.addStrategy("survival", survivalStrategy);
+            featureLoader.AddWeapon("gun", gun1);
+            featureLoader.AddWeapon("sword", sword1);
+            featureLoader.AddWeapon("tazer", tazer);
+        }
+
+        private void checkPlayerClicked() 
+        { 
+            mouseStateCurrent = Mouse.GetState(); 
+            var mousePosition = new Point (mouseStateCurrent.X, mouseStateCurrent.Y); 
+            foreach(KeyValuePair<String, Rectangle> area in startMenu.buttonAreas) 
+            { 
+                if(area.Value.Contains(mousePosition)) 
+                { 
+                    startMenu.setLevelHighlighted(area.Key); 
+                    if(mouseStateCurrent.LeftButton == ButtonState.Released && mouseStatePrevious.LeftButton == ButtonState.Pressed) 
+                    { 
+                        if(area.Key == "gameOverButton") 
+                        { 
+                            startMenu.setGameOver(false); 
+                        } 
+                        else
+                        { 
+                            if(!startMenu.isGameOver()) 
+                            { 
+                                selectedLevel = new Level(); 
+                                xmlManager = new XmlManager<Level>(); 
+                                xmlManager.Type = selectedLevel.GetType(); 
+                                
+                                switch(area.Key) 
+                                { 
+                                    case"danielButton": 
+                                        xmlPath = "Data/Crackenarium.xml"; 
+                                        LoadContent();
+                                        LoadFeatureLevels();
+                                        break; 
+                                    case"djastinButton": 
+                                        xmlPath = "Data/Kloonwereld.xml"; 
+                                        LoadContent();
+                                        LoadFeatureLevels();
+                                        break; 
+                                    case"gideonButton": 
+                                        xmlPath = "Data/Cijfernarium.xml"; 
+                                        LoadContent();
+                                        LoadFeatureLevels();
+                                        break; 
+                                    case"rutgerButton": 
+                                        xmlPath = "Data/Starbucksalandorium.xml"; 
+                                        LoadContent(); 
+                                        LoadFeatureLevels(); 
+                                        break; 
+                                } 
+                            } 
+                        } 
+                    } 
+                } 
+            } 
+            mouseStatePrevious = mouseStateCurrent;
+        }
+
+        private void LoadFeatureLevels()
+        {
+            foreach (IAttackBehavior attackBehavior in FeatureLoader.GetInstance().GetAttacks().Values)
+            {
+                if (attackBehavior is ThrowAttack)
+                {
+                    ((ThrowAttack)attackBehavior).setLevel(this.selectedLevel);
+                }
+            }
+        }
+        protected override void LoadContent()
+        {
+            // NEW CONTENT LOADING:
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            if (selectedLevel == null)
+            {
+                startMenu.Show(graphics);
+            }
+            else
+            {
+                startMenu.Hide(graphics); 
+                selectedLevel = xmlManager.Load(xmlPath);
+                selectedLevel.Load();
+                controller = new GameController(selectedLevel);
+                startMenu.showMenu = false;
+            }
+        }
+
+        protected override void UnloadContent()
+        {
+
+        }
+
+        protected override void Update(GameTime gameTime)
+        {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+                this.Exit();
+
+            checkPlayerClicked();
+
+            if (selectedLevel != null)
+            {
+                controller.HandleInput(graphics, prevKB, Keyboard.GetState(), gameTime);
+
+                if (selectedLevel.EnteredRoom != null)
+                {
+                    if (selectedLevel.EnteredRoom.IsPresent)
+                        selectedLevel.EnteredRoom.Update(gameTime);
+                    else
+                        selectedLevel.Update(gameTime);
+                }
+                else
+                    selectedLevel.Update(gameTime);
+
+
+                if(!selectedLevel.Player.IsAlive())
+                {
+                    startMenu.setGameOver(true);
+                    startMenu.Show(graphics);
+                    selectedLevel = null;
+                } 
+
+                prevKB = Keyboard.GetState();
+                base.Update(gameTime);
+            }
+        }
+
+        public void DrawLayers(GameTime gameTime)
+        {
+            selectedLevel.Layers[0].Draw(gameTime, spriteBatch);
+            selectedLevel.Layers[1].Draw(gameTime, spriteBatch);
+        }
+
+        protected override void Draw(GameTime gameTime)
+        {
+            graphics.GraphicsDevice.Clear(Color.Black);
+
+            if (startMenu.showMenu)
+            {
+                SpriteBatch batch = new SpriteBatch(graphics.GraphicsDevice);
+                batch.Begin();
+                startMenu.Draw(batch);
+                batch.End();
+            }
+            if (selectedLevel != null && !startMenu.showMenu)
+            {
+                spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null,
+                selectedLevel.GetCamera().getViewMatrix(new Vector2(1.0f)));
+
+                if (selectedLevel.EnteredRoom != null)
+                {
+                    if (selectedLevel.EnteredRoom.IsPresent)
+                    {
+                        selectedLevel.Layers[2].Draw(gameTime, spriteBatch);
+                        selectedLevel.Layers[3].Draw(gameTime, spriteBatch);
+                    }
+                    else
+                        DrawLayers(gameTime);
+                }
+                else
+                    DrawLayers(gameTime);
+
+                if (selectedLevel.Player.IsAlive())
+                {
+                    Weapon weapon = selectedLevel.Player.GetWeapon();
+                    weapon.Draw(gameTime, spriteBatch);
+
+                    if (weapon is ShootableWeapon)
+                    {
+                        ShootableWeapon shootableWeapon = (ShootableWeapon)weapon;
+
+                        if (shootableWeapon.getAmmo().Count() > 0)
+                        {
+                            for (int ammo_inc = 0; ammo_inc <= shootableWeapon.getAmmo().Count() - 1; ammo_inc++)
+                            {
+                                shootableWeapon.getAmmo()[ammo_inc].Draw(gameTime, spriteBatch);
+                            }
+                        }
+                    }
+                    if (selectedLevel.Player.isMeditating())
+                    {
+                        Player player = selectedLevel.Player;
+                        //CalculatorBoost calculatorBoost = ((CalculatorBoost)player.getBoost());
+                        //calculatorBoost.Draw(spriteBatch);
+                        MeditationBoost meditationBoost = ((MeditationBoost)player.getBoost());
+                        meditationBoost.Draw(spriteBatch, player.position);
+                    }
+                }
+
+                foreach (MovableObject movableObject in selectedLevel.MovableObjects)
+                {
+                    if (movableObject is Enemy)
+                    {
+                        Enemy enemy = (Enemy)movableObject;
+                        ThrowAttack attack = ((ThrowAttack)enemy.getAttack());
+                        if (attack != null && attack.getThrowObject() != null)
+                        {
+
+                            attack.getThrowObject().Walk(Direction.Right, attack.getThrowObject().speed);
+                            attack.getThrowObject().Update(gameTime);
+                            attack.getThrowObject().Draw(spriteBatch);
+                        }
+                    }
+                }
+                updateScreenText(spriteBatch);
+                try
+                {
+
+                    spriteBatch.End();
+                }
+                catch (ObjectDisposedException ex)
+                {
+                    Debug.Write(ex.StackTrace);
+                }
+
+            }
+
+            base.Draw(gameTime);
+        }
+
+        public void updateScreenText(SpriteBatch spriteBatch)
+        {
+            Player player = selectedLevel.Player;
+            String weaponName = player.GetWeapon().textureName;
+
+            spriteBatch.DrawString(font, "Selected Weapon: " + weaponName.Substring(0, 1).ToUpper() + weaponName.Substring(1)
+                , selectedLevel.GetCamera().Position + new Vector2(10, 10), Color.Green);
+
+            spriteBatch.DrawString(font, "HP: " + player.GetHp(), selectedLevel.GetCamera().Position + new Vector2(10, 35)
+                , Color.Green);
+
+            spriteBatch.DrawString(font, "Total items: " + player.CollectedItems.Count + " of " + selectedLevel.GetTotalCollectableItems(), 
+                selectedLevel.GetCamera().Position + new Vector2(10, 60), Color.Green);
+
+            if (!player.IsAlive())
+                spriteBatch.DrawString(font, "Game Over!", selectedLevel.GetCamera().Position + new Vector2(260, 240), Color.Red);
+
+            if (selectedLevel.GetMovableObjects().Count == 1)
+                spriteBatch.DrawString(font, "You've won!", selectedLevel.GetCamera().Position + new Vector2(180, 240), Color.Red);
+        }
+    }
+}

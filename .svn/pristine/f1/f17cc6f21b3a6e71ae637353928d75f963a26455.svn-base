@@ -1,0 +1,117 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Jumping.Models.Sprites
+{
+    public class ThrowObject : MovableObject
+    {
+        private Boolean isEnemyObject;
+        private MovableObject thrower;
+        private Texture2D throwTexture;
+        public ThrowObject()
+        {
+            speed = 0.5f;
+            damage = 120;
+        }
+        public int getDamage()
+        {
+            return damage;
+        }
+        public void setThrower(MovableObject thrower)
+        {
+            if (thrower is Enemy) { isEnemyObject = true; }
+            else { isEnemyObject = false; }
+            this.thrower = thrower;
+        }
+        public void Initialize()
+        {
+
+            this.position = thrower.position;
+            String throwTextureName = "";
+            
+            switch (thrower.GetLevel().Name)
+            {
+                case "StarbucksSalandorium":
+                    screenBoundWidth = 3000;
+                    if (thrower.GetType() == typeof(LittleEnemy))
+                    {
+                        throwTextureName = "ThrowAttackLittleHipster";
+
+                    }
+                    break;
+                case "Cijfernarium":
+                    screenBoundWidth = 4500;
+                    if (thrower.GetType() == typeof(LittleEnemy))
+                    {
+                        throwTextureName = "laptop";
+                    }
+                    if (thrower.GetType() == typeof(EndBoss))
+                    {
+                        throwTextureName = "FGrade";
+                    }
+                    if (thrower.GetType() == typeof(Player))
+                    {
+                        throwTextureName = "papercut";
+                    }
+                    break;
+                case "Crackenarium":
+                    screenBoundWidth = 3000;
+                    if (thrower.GetType() == typeof(LittleEnemy))
+                    {
+                        
+                        throwTextureName = "heroineNaald";
+
+                    }
+                    break;
+                default:
+                    throwTextureName = "tazer";
+                    break;
+                // HIER ONDER DE TEXTURES PER ENEMY/PLAYER PER LEVEL
+                /*case "Starbucksalandorium":
+                if(thrower.GetType() == typeof(LittleEnemy)
+                {
+                    throwTexture = "ThrowAttackLittleHipster";
+                }
+                break;*/
+            }
+            throwTexture = TextureLoader.GetInstance().GetTexture(throwTextureName);
+
+            frameHeight = TextureLoader.GetInstance().GetTexture(throwTextureName).Height;
+            frameWidth = TextureLoader.GetInstance().GetTexture(throwTextureName).Width;
+            base.Initialize(false);
+        }
+
+        public bool CheckCollision(ISprite sprite)
+        {
+            collisionBox = new Rectangle((int)_Position.X, (int)_Position.Y, throwTexture.Width, throwTexture.Height);
+            bool isCollision = false;
+
+            if (sprite is Enemy && !isEnemyObject)
+            {
+                Enemy player = (Enemy)sprite;
+                Rectangle enemyBox = new Rectangle((int)player._Position.X, (int)player._Position.Y, player.Texture.Width, player.Texture.Height);
+                isCollision = collisionBox.Intersects(enemyBox);
+            }
+            if (sprite is Player && isEnemyObject)
+            {
+                Player enemy = (Player)sprite;
+                Rectangle enemyBox = new Rectangle((int)enemy._Position.X, (int)enemy._Position.Y, enemy.Texture.Width, enemy.Texture.Height);
+                isCollision = collisionBox.Intersects(enemyBox);
+            }
+            return isCollision;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(throwTexture, position + new Vector2(50,30), Color.White);
+        }
+
+       
+    }
+
+}
+
